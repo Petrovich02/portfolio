@@ -239,8 +239,6 @@
                 type: "button", className: "text-button", "aria-pressed": preview,
                 onClick: function () { setPreview(!preview); setFull(false); setError(false); },
               }, preview ? "Смотреть полную версию" : current.localIsExcerpt ? "Смотреть фрагмент с сайта" : "Смотреть копию с сайта", icon(Arrow)),
-              h("a", { className: "text-button", href: current.watchUrl, target: "_blank", rel: "noopener noreferrer" },
-                "Открыть в VK Видео", icon(Arrow)),
             ) : null,
             localExcerpt && !embedded && localPreview && original ? h("button", {
               type: "button", className: "text-button", "aria-pressed": full,

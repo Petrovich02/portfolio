@@ -30,7 +30,6 @@ window.PORTFOLIO_CATALOG = [
         "excerptStart": 0,
         "youtubeUrl": "https://www.youtube.com/watch?v=0g3nw048Qfs",
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239020&hash=340beede660fa879&hd=4",
-        "watchUrl": "https://vkvideo.ru/video-232982396_456239020",
         "localIsExcerpt": true,
         "localPlaybackDuration": 90.007
       },
@@ -48,7 +47,6 @@ window.PORTFOLIO_CATALOG = [
         "excerptStart": 0,
         "youtubeUrl": "https://www.youtube.com/watch?v=-enIMwowWEc",
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239044&hash=97fd5ef1c4f00525&hd=4",
-        "watchUrl": "https://vkvideo.ru/video-232982396_456239044",
         "localIsExcerpt": true,
         "localPlaybackDuration": 90.007
       },
@@ -66,7 +64,6 @@ window.PORTFOLIO_CATALOG = [
         "excerptStart": 0,
         "youtubeUrl": "https://www.youtube.com/watch?v=2Kzne0EZTrg",
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239021&hash=bfbba7b583d30fc7&hd=4",
-        "watchUrl": "https://vkvideo.ru/video-232982396_456239021",
         "localIsExcerpt": true,
         "localPlaybackDuration": 90.007
       }
@@ -344,7 +341,6 @@ window.PORTFOLIO_CATALOG = [
         "excerptStart": 0,
         "youtubeUrl": "",
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239018&hash=dfcc28c30a75996a&hd=3",
-        "watchUrl": "https://vkvideo.ru/video-232982396_456239018",
         "localIsExcerpt": true,
         "localPlaybackDuration": 90.0
       }
@@ -1106,7 +1102,6 @@ window.PORTFOLIO_CATALOG = [
         "excerptStart": 0,
         "youtubeUrl": "",
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239029&hash=b2494a0ff64ca53e&hd=4",
-        "watchUrl": "https://vkvideo.ru/video-232982396_456239029",
         "localIsExcerpt": true,
         "localPlaybackDuration": 90.0
       }
@@ -1141,7 +1136,6 @@ window.PORTFOLIO_CATALOG = [
         "excerptStart": 0,
         "youtubeUrl": "",
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239022&hash=1ddbae20c7063b70&hd=4",
-        "watchUrl": "https://vkvideo.ru/video-232982396_456239022",
         "localIsExcerpt": true,
         "localPlaybackDuration": 90.0
       }
@@ -1176,7 +1170,6 @@ window.PORTFOLIO_CATALOG = [
         "excerptStart": 0,
         "youtubeUrl": "",
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239019&hash=4f75aa1dd6183c8a&hd=4",
-        "watchUrl": "https://vkvideo.ru/video-232982396_456239019",
         "localIsExcerpt": true,
         "localPlaybackDuration": 90.0
       }
@@ -1211,7 +1204,6 @@ window.PORTFOLIO_CATALOG = [
         "excerptStart": 0,
         "youtubeUrl": "",
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239017&hash=c9d885a77ebff537&hd=4",
-        "watchUrl": "https://vkvideo.ru/video-232982396_456239017",
         "localIsExcerpt": false,
         "localPlaybackDuration": 112.0
       }

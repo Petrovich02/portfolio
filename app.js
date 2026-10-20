@@ -12,9 +12,6 @@
     { id: "real-estate", label: "Недвижимость" }, { id: "hotels", label: "Отели" },
     { id: "yoga", label: "Йога" },
   ];
-  const localPreview = location.protocol === "file:" ||
-    ["localhost", "127.0.0.1"].includes(location.hostname);
-
   function mediaUrl(path) {
     return site.mediaBaseUrl && path.startsWith("assets/video/")
       ? site.mediaBaseUrl.replace(/\/$/, "") + "/" + path.slice("assets/video/".length) : path;
@@ -179,74 +176,98 @@
     );
   }
 
+  function ShowreelDialog(props) {
+    const dialog = useRef(null);
+    const video = useRef(null);
+    const closeTimer = useRef(null);
+    const closing = useRef(false);
+    const [isClosing, setClosing] = useState(false);
+    const [error, setError] = useState(false);
+    const [retry, setRetry] = useState(0);
+    useDialog(dialog);
+    useEffect(function () {
+      const playback = video.current.play();
+      if (playback) playback.catch(function () { /* Native controls remain available if autoplay is blocked. */ });
+    }, [retry]);
+    useEffect(function () { return function () { clearTimeout(closeTimer.current); }; }, []);
+    function close() {
+      if (closing.current) return;
+      closing.current = true;
+      video.current.pause();
+      if (!props.motion) { props.onClose(); return; }
+      setClosing(true);
+      closeTimer.current = setTimeout(props.onClose, 220);
+    }
+    return h("dialog", {
+      ref: dialog,
+      className: "showreel-modal" + (isClosing ? " is-closing" : "") + (props.motion ? "" : " is-static"),
+      "aria-label": "Шоурил Геннадия",
+      onCancel: function (event) { event.preventDefault(); close(); },
+      onClick: function (event) { if (event.target === dialog.current) close(); },
+    },
+      h("div", { className: "showreel-player" },
+        h(IconButton, { label: "Закрыть шоурил", className: "icon-button showreel-close", onClick: close }, icon(Close)),
+        h("video", {
+          ref: video, key: retry, controls: true, autoPlay: true, playsInline: true, preload: "auto",
+          src: mediaUrl(site.showreel), poster: site.showreelPoster, "aria-label": "Шоурил Геннадия",
+          onError: function () { setError(true); },
+        }),
+        error ? h("div", { className: "showreel-error error-message", role: "alert" },
+          h("p", {}, "Не удалось загрузить шоурил."),
+          h("button", {
+            type: "button", className: "soft-button", onClick: function () { setError(false); setRetry(retry + 1); },
+          }, "Повторить загрузку")) : null,
+      ),
+    );
+  }
+
   function ProjectDialog(props) {
     const project = props.project;
     const dialog = useRef(null);
     const [selected, setSelected] = useState(0);
-    const [full, setFull] = useState(false);
-    const [preview, setPreview] = useState(false);
     const [error, setError] = useState(false);
     const [retry, setRetry] = useState(0);
     const current = project.media[selected];
     useDialog(dialog);
-    function choose(index) { setSelected(index); setFull(false); setPreview(false); setError(false); }
-    const original = current.source && (location.protocol === "file:"
-      ? "../" + encodeURIComponent(current.source) : "/originals/" + current.id + ".mp4");
-    const src = full ? original : mediaUrl(current.src);
-    const embedded = Boolean(current.embedUrl && !preview && !full);
-    const localExcerpt = current.embedUrl ? current.localIsExcerpt : current.isExcerpt;
-    const showingExcerpt = localExcerpt && !embedded && !full;
+    function choose(index) { setSelected(index); setError(false); setRetry(0); }
     return h("dialog", {
       ref: dialog, className: "project-modal", "aria-labelledby": "project-title",
       onCancel: props.onClose, onClick: function (event) { if (event.target === dialog.current) props.onClose(); },
     },
       h("div", { className: "modal-shell" },
         h("div", { className: "modal-header" },
-          h("span", {}, project.category === "showreel" ? "ИЗБРАННЫЕ РАБОТЫ / SHOWREEL" : project.subtitle),
+          h("span", {}, project.subtitle),
           h(IconButton, { label: "Закрыть просмотр", onClick: props.onClose }, icon(Close)),
         ),
         h("div", { className: "modal-body " + (current.portrait ? "portrait" : "landscape") },
           h("div", { className: "player-column" },
             h("div", { className: "media-stage", style: { "--media-aspect": current.aspect } },
-              embedded ? h("iframe", {
-                key: current.id, src: current.embedUrl + "&autoplay=1", title: current.title,
+              current.embedUrl ? h("iframe", {
+                key: current.id + "-" + retry, src: current.embedUrl + "&autoplay=1", title: current.title,
                 className: "external-player", allowFullScreen: true,
                 allow: "autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock",
                 referrerPolicy: "strict-origin-when-cross-origin",
+                onError: function () { setError(true); },
               }) : h("video", {
-                key: current.id + "-" + full + "-" + retry, controls: true, playsInline: true,
-                autoPlay: true, preload: "metadata", poster: current.poster, src: src,
+                key: current.id + "-" + retry, controls: true, playsInline: true,
+                autoPlay: true, preload: "metadata", poster: current.poster, src: mediaUrl(current.src),
                 "aria-label": current.title, onError: function () { setError(true); },
               }),
             ),
             h("div", { className: "player-caption" },
               h("span", {}, current.title),
-              h("span", {}, showingExcerpt
-                ? "Фрагмент " + time(current.localPlaybackDuration || current.playbackDuration) + " / " + time(current.duration)
+              h("span", {}, current.isExcerpt
+                ? "Фрагмент " + time(current.playbackDuration) + " / " + time(current.duration)
                 : time(current.duration)),
             ),
-            showingExcerpt || full ? h("p", { className: "excerpt-note" },
-              full ? "Полная работа из папки портфолио."
-                : "Здесь показан фрагмент. Длительность полной работы — " + time(current.duration) + ".") : null,
+            current.isExcerpt ? h("p", { className: "excerpt-note" },
+              "Фрагмент работы. Полная длительность — " + time(current.duration) + ".") : null,
             error ? h("div", { className: "error-message", role: "alert" },
-              h("p", {}, "Видео не загрузилось. Проверь соединение или открой полную версию."),
+              h("p", {}, "Не удалось загрузить видео. Попробуй ещё раз."),
               h("button", {
                 type: "button", className: "soft-button",
                 onClick: function () { setError(false); setRetry(retry + 1); },
               }, "Повторить загрузку")) : null,
-            current.embedUrl ? h("div", { className: "player-alternatives" },
-              h("button", {
-                type: "button", className: "text-button", "aria-pressed": preview,
-                onClick: function () { setPreview(!preview); setFull(false); setError(false); },
-              }, preview ? "Смотреть полную версию" : current.localIsExcerpt ? "Смотреть фрагмент с сайта" : "Смотреть копию с сайта", icon(Arrow)),
-            ) : null,
-            localExcerpt && !embedded && localPreview && original ? h("button", {
-              type: "button", className: "text-button", "aria-pressed": full,
-              onClick: function () { setFull(!full); setError(false); },
-            }, full ? "Вернуться к фрагменту" : "Смотреть полную работу с компьютера", icon(Arrow)) : null,
-            current.youtubeUrl ? h("a", {
-              className: "text-button", href: current.youtubeUrl, target: "_blank", rel: "noopener noreferrer",
-            }, "Полный обзор на YouTube", icon(Arrow)) : null,
           ),
           h("div", { className: "project-details" },
             h("span", { className: "eyebrow" }, project.media.length > 1
@@ -334,7 +355,7 @@
           h("a", { href: "tel:" + site.phone }, site.phoneLabel),
           h("a", { href: "mailto:" + site.email }, site.email)),
         h("form", { className: "brief-form", onSubmit: function (event) { event.preventDefault(); copyBrief(); } },
-          h("p", { className: "brief-intro" }, "Или сначала собери короткий запрос"),
+          h("p", { className: "brief-intro" }, "Подготовить сообщение"),
           h("label", {}, "Формат",
             h("select", { value: format, onChange: function (event) { setFormat(event.target.value); setCopied(false); } },
               ["Shorts / Reels", "Обзор / видео 16:9", "Серия роликов", "Событие / личная история"].map(function (label) {
@@ -347,10 +368,10 @@
               onChange: function (event) { setTask(event.target.value); setCopied(false); },
             })),
           h("button", { type: "submit", className: "soft-button copy-brief" },
-            icon(copied ? Check : Copy), copied ? "Запрос скопирован" : "Скопировать запрос"),
+            icon(copied ? Check : Copy), copied ? "Сообщение скопировано" : "Скопировать сообщение"),
           h("p", { className: "contact-note", role: "status" }, copied
-            ? "Вставь текст в Telegram или письмо — и отправь, когда будешь готов."
-            : "Текст можно скопировать и отправить мне удобным способом."),
+            ? "Вставь сообщение в Telegram или письмо и отправь."
+            : "Сообщение не отправляется автоматически. Скопируй его и отправь в Telegram или по почте."),
           fallback ? h("label", { className: "copy-fallback" }, "Скопируй текст вручную",
             h("textarea", { readOnly: true, value: brief, rows: 4, onFocus: function (event) { event.target.select(); } })) : null,
         ),
@@ -410,16 +431,9 @@
     });
     const featured = visible.find(function (project) { return project.id === "hotels"; });
     const stories = projects.filter(function (project) { return project.category === "stories"; });
-    const showreelProject = {
-      id: "showreel", category: "showreel", title: "Монтаж в движении", subtitle: "Избранные работы / Showreel",
-      summary: "Короткие форматы, недвижимость, отели, йога и личные истории. Разные задачи и настроение — в одном шоуриле.",
-      tags: ["Showreel", "5 направлений", time(site.showreelDuration)],
-      media: [{ id: "showreel", title: "Шоурил", src: site.showreel, poster: site.showreelPoster,
-        duration: site.showreelDuration, playbackDuration: site.showreelDuration, aspect: "16 / 9", portrait: false }],
-    };
     const closeMenu = function () { setMenu(false); };
     const showContact = function () { closeMenu(); setContact(true); };
-    const playReel = function () { closeMenu(); setActiveProject(showreelProject); };
+    const playReel = function () { closeMenu(); setActiveProject({ id: "showreel" }); };
     useEffect(function () {
       document.documentElement.style.scrollBehavior = motion ? "smooth" : "auto";
       try { localStorage.setItem("portfolio-motion", motion ? "on" : "off"); } catch (_) {}
@@ -431,6 +445,12 @@
       preference.addEventListener("change", update);
       return function () { preference.removeEventListener("change", update); };
     }, []);
+    useEffect(function () {
+      if (!menu) return;
+      function closeOnEscape(event) { if (event.key === "Escape") setMenu(false); }
+      document.addEventListener("keydown", closeOnEscape);
+      return function () { document.removeEventListener("keydown", closeOnEscape); };
+    }, [menu]);
     function moveHero(event) {
       if (!motion || event.pointerType === "touch") return;
       const rectangle = hero.current.getBoundingClientRect();
@@ -488,7 +508,7 @@
             h("span", { className: "eyebrow" }, "ПОРТФОЛИО"),
             h("h2", { className: "display-title" }, "РАБОТЫ"),
             h("p", {}, "Выбери направление", h("br"), "и посмотри примеры."),
-            h("span", { className: "works-total" }, count + " видео / " + projects.length + " проектов"),
+            h("span", { className: "works-total" }, "Всего в портфолио: " + count + " видео"),
           ),
           h("div", { className: "works-content" },
             h("div", { className: "works-toolbar" },
@@ -547,7 +567,8 @@
         h("a", { className: "wordmark", href: "#top" }, "Портфолио"),
         h("span", {}, site.name + " · " + new Date().getFullYear()),
         h("a", { href: "#top" }, "Наверх", icon(Arrow))),
-      activeProject ? h(ProjectDialog, { key: activeProject.id, project: activeProject,
+      activeProject ? h(activeProject.id === "showreel" ? ShowreelDialog : ProjectDialog, {
+        key: activeProject.id, project: activeProject, motion: motion,
         onClose: function () { setActiveProject(null); } }) : null,
       contact ? h(ContactDialog, { onClose: function () { setContact(false); } }) : null,
     );

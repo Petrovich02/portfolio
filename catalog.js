@@ -28,10 +28,7 @@ window.PORTFOLIO_CATALOG = [
         "playbackDuration": 412.061,
         "isExcerpt": false,
         "excerptStart": 0,
-        "youtubeUrl": "https://www.youtube.com/watch?v=0g3nw048Qfs",
-        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239020&hash=340beede660fa879&hd=4",
-        "localIsExcerpt": true,
-        "localPlaybackDuration": 90.007
+        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239020&hash=340beede660fa879&hd=4"
       },
       {
         "id": "work-051",
@@ -45,10 +42,7 @@ window.PORTFOLIO_CATALOG = [
         "playbackDuration": 569.101,
         "isExcerpt": false,
         "excerptStart": 0,
-        "youtubeUrl": "https://www.youtube.com/watch?v=-enIMwowWEc",
-        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239044&hash=97fd5ef1c4f00525&hd=4",
-        "localIsExcerpt": true,
-        "localPlaybackDuration": 90.007
+        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239044&hash=97fd5ef1c4f00525&hd=4"
       },
       {
         "id": "work-052",
@@ -62,10 +56,7 @@ window.PORTFOLIO_CATALOG = [
         "playbackDuration": 426.361,
         "isExcerpt": false,
         "excerptStart": 0,
-        "youtubeUrl": "https://www.youtube.com/watch?v=2Kzne0EZTrg",
-        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239021&hash=bfbba7b583d30fc7&hd=4",
-        "localIsExcerpt": true,
-        "localPlaybackDuration": 90.007
+        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239021&hash=bfbba7b583d30fc7&hd=4"
       }
     ]
   },
@@ -96,8 +87,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 40.708,
         "playbackDuration": 40.708,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-048",
@@ -110,8 +100,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 47.867,
         "playbackDuration": 47.867,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-045",
@@ -124,8 +113,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 43.6,
         "playbackDuration": 43.6,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-037",
@@ -138,8 +126,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 47.233,
         "playbackDuration": 47.233,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-042",
@@ -152,8 +139,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 63.6,
         "playbackDuration": 63.6,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-038",
@@ -166,8 +152,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 48.167,
         "playbackDuration": 48.167,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-040",
@@ -180,8 +165,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 33.167,
         "playbackDuration": 33.167,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-053",
@@ -194,8 +178,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 20.458,
         "playbackDuration": 20.458,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-059",
@@ -208,8 +191,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 60.083,
         "playbackDuration": 60.083,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-065",
@@ -222,8 +204,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 31.933,
         "playbackDuration": 31.933,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-073",
@@ -236,8 +217,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 146.843,
         "playbackDuration": 146.843,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       }
     ]
   },
@@ -268,8 +248,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 51.0,
         "playbackDuration": 51.0,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-064",
@@ -282,8 +261,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 44.458,
         "playbackDuration": 44.458,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-057",
@@ -296,8 +274,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 101.958,
         "playbackDuration": 101.958,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-058",
@@ -310,8 +287,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 62.292,
         "playbackDuration": 62.292,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-036",
@@ -324,8 +300,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 119.333,
         "playbackDuration": 119.333,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-072",
@@ -339,10 +314,7 @@ window.PORTFOLIO_CATALOG = [
         "playbackDuration": 207.099,
         "isExcerpt": false,
         "excerptStart": 0,
-        "youtubeUrl": "",
-        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239018&hash=dfcc28c30a75996a&hd=3",
-        "localIsExcerpt": true,
-        "localPlaybackDuration": 90.0
+        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239018&hash=dfcc28c30a75996a&hd=3"
       }
     ]
   },
@@ -373,8 +345,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 109.505,
         "playbackDuration": 109.505,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-002",
@@ -387,8 +358,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 16.042,
         "playbackDuration": 16.042,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-003",
@@ -401,8 +371,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 14.708,
         "playbackDuration": 14.708,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-004",
@@ -415,8 +384,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 8.542,
         "playbackDuration": 8.542,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-005",
@@ -429,8 +397,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 9.042,
         "playbackDuration": 9.042,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-006",
@@ -443,8 +410,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 13.167,
         "playbackDuration": 13.167,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-007",
@@ -457,8 +423,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 27.678,
         "playbackDuration": 27.678,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-008",
@@ -471,8 +436,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 8.792,
         "playbackDuration": 8.792,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-009",
@@ -485,8 +449,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 14.667,
         "playbackDuration": 14.667,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-010",
@@ -499,8 +462,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 45.833,
         "playbackDuration": 45.833,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-011",
@@ -513,8 +475,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 29.292,
         "playbackDuration": 29.292,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-012",
@@ -527,8 +488,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 14.833,
         "playbackDuration": 14.833,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-013",
@@ -541,8 +501,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 15.792,
         "playbackDuration": 15.792,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-014",
@@ -555,8 +514,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 13.25,
         "playbackDuration": 13.25,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-015",
@@ -569,8 +527,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 9.708,
         "playbackDuration": 9.708,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-016",
@@ -583,8 +540,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 6.333,
         "playbackDuration": 6.333,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-017",
@@ -597,8 +553,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 88.333,
         "playbackDuration": 88.333,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-018",
@@ -611,8 +566,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 37.125,
         "playbackDuration": 37.125,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-019",
@@ -625,8 +579,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 6.542,
         "playbackDuration": 6.542,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-020",
@@ -639,8 +592,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 6.583,
         "playbackDuration": 6.583,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-021",
@@ -653,8 +605,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 17.125,
         "playbackDuration": 17.125,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-022",
@@ -667,8 +618,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 14.375,
         "playbackDuration": 14.375,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-023",
@@ -681,8 +631,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 20.875,
         "playbackDuration": 20.875,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-024",
@@ -695,8 +644,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 18.333,
         "playbackDuration": 18.333,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-025",
@@ -709,8 +657,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 11.375,
         "playbackDuration": 11.375,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-026",
@@ -723,8 +670,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 9.333,
         "playbackDuration": 9.333,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-027",
@@ -737,8 +683,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 13.839,
         "playbackDuration": 13.839,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-028",
@@ -751,8 +696,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 16.0,
         "playbackDuration": 16.0,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-029",
@@ -765,8 +709,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 28.958,
         "playbackDuration": 28.958,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-030",
@@ -779,8 +722,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 49.625,
         "playbackDuration": 49.625,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-031",
@@ -793,8 +735,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 9.417,
         "playbackDuration": 9.417,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-032",
@@ -807,8 +748,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 32.252,
         "playbackDuration": 32.252,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-033",
@@ -821,8 +761,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 10.333,
         "playbackDuration": 10.333,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-034",
@@ -835,8 +774,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 15.348,
         "playbackDuration": 15.348,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-035",
@@ -849,8 +787,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 19.083,
         "playbackDuration": 19.083,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       }
     ]
   },
@@ -881,8 +818,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 11.792,
         "playbackDuration": 11.792,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-039",
@@ -895,8 +831,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 23.958,
         "playbackDuration": 23.958,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-049",
@@ -909,8 +844,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 8.75,
         "playbackDuration": 8.75,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-054",
@@ -923,8 +857,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 7.25,
         "playbackDuration": 7.25,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-055",
@@ -937,8 +870,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 35.5,
         "playbackDuration": 35.5,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-056",
@@ -951,8 +883,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 15.833,
         "playbackDuration": 15.833,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-061",
@@ -965,8 +896,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 53.875,
         "playbackDuration": 53.875,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-063",
@@ -979,8 +909,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 22.458,
         "playbackDuration": 22.458,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-071",
@@ -993,8 +922,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 12.875,
         "playbackDuration": 12.875,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       }
     ]
   },
@@ -1025,8 +953,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 40.833,
         "playbackDuration": 40.833,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-067",
@@ -1039,8 +966,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 36.958,
         "playbackDuration": 36.958,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-068",
@@ -1053,8 +979,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 61.37,
         "playbackDuration": 61.37,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       },
       {
         "id": "work-069",
@@ -1067,8 +992,7 @@ window.PORTFOLIO_CATALOG = [
         "duration": 47.167,
         "playbackDuration": 47.167,
         "isExcerpt": false,
-        "excerptStart": 0,
-        "youtubeUrl": ""
+        "excerptStart": 0
       }
     ]
   },
@@ -1100,10 +1024,7 @@ window.PORTFOLIO_CATALOG = [
         "playbackDuration": 2329.8,
         "isExcerpt": false,
         "excerptStart": 0,
-        "youtubeUrl": "",
-        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239029&hash=b2494a0ff64ca53e&hd=4",
-        "localIsExcerpt": true,
-        "localPlaybackDuration": 90.0
+        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239029&hash=b2494a0ff64ca53e&hd=4"
       }
     ]
   },
@@ -1134,10 +1055,7 @@ window.PORTFOLIO_CATALOG = [
         "playbackDuration": 6983.8,
         "isExcerpt": false,
         "excerptStart": 0,
-        "youtubeUrl": "",
-        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239022&hash=1ddbae20c7063b70&hd=4",
-        "localIsExcerpt": true,
-        "localPlaybackDuration": 90.0
+        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239022&hash=1ddbae20c7063b70&hd=4"
       }
     ]
   },
@@ -1168,10 +1086,7 @@ window.PORTFOLIO_CATALOG = [
         "playbackDuration": 241.88,
         "isExcerpt": false,
         "excerptStart": 0,
-        "youtubeUrl": "",
-        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239019&hash=4f75aa1dd6183c8a&hd=4",
-        "localIsExcerpt": true,
-        "localPlaybackDuration": 90.0
+        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239019&hash=4f75aa1dd6183c8a&hd=4"
       }
     ]
   },
@@ -1202,10 +1117,7 @@ window.PORTFOLIO_CATALOG = [
         "playbackDuration": 112.0,
         "isExcerpt": false,
         "excerptStart": 0,
-        "youtubeUrl": "",
-        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239017&hash=c9d885a77ebff537&hd=4",
-        "localIsExcerpt": false,
-        "localPlaybackDuration": 112.0
+        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239017&hash=c9d885a77ebff537&hd=4"
       }
     ]
   }

@@ -23,7 +23,7 @@ body { min-width: 0; overflow-x: hidden; }
 @keyframes ambient-drift-violet { from { transform: translate3d(5vw, -9vh, 0) scale(1.12); } to { transform: translate3d(-14vw, 14vh, 0) scale(.92); } }
 @media (hover: none), (pointer: coarse) { .pointer-ribbon { display: none; } }
 @media (hover: hover) and (pointer: fine) {
-  .site-shell { cursor: url("assets/cursors/chrome-arrow.svg") 4 3, auto; }
+  #root { cursor: url("assets/cursors/chrome-arrow.svg") 4 3, auto; }
   .site-shell :is(a, button, select, summary, input[type="range"]) { cursor: url("assets/cursors/chrome-link.svg") 4 3, pointer; }
   .site-shell :is(textarea, input:not([type="range"]), [contenteditable="true"]) { cursor: text; }
   .site-shell :is(button:disabled, [aria-disabled="true"]) { cursor: not-allowed; }

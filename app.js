@@ -430,6 +430,11 @@
       return function () { cancelAnimationFrame(frame.current); };
     }, [motion]);
     useEffect(function () {
+      // React creates section anchors after the browser's initial fragment navigation.
+      const target = document.getElementById(window.location.hash.slice(1));
+      if (target) target.scrollIntoView({ behavior: "instant", block: "start" });
+    }, []);
+    useEffect(function () {
       const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
       const update = function (event) { if (event.matches) setMotion(false); };
       preference.addEventListener("change", update);

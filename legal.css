@@ -50,6 +50,7 @@ h2 { font-size: 23px; font-weight: 550; line-height: 1.45; letter-spacing: -.02e
   .legal-header { min-height: 72px; font-size: 12px; }
   .legal-header .brand { font-size: 14px; }
   .legal-intro { padding: 42px 0 32px; }
+  .privacy-page h1 { font-size: clamp(24px, 7vw, 36px); overflow-wrap: normal; }
   .lead { font-size: 15px; line-height: 1.8; }
   .legal-layout { display: block; padding-bottom: 48px; }
   .legal-toc { position: static; gap: 10px; padding-bottom: 32px; }

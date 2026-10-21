@@ -315,7 +315,7 @@
     const [copied, setCopied] = useState(false);
     const [fallback, setFallback] = useState(false);
     useDialog(dialog);
-    const brief = "Геннадий, привет! Хочу обсудить монтаж.\nФормат: " + format + ".\n" +
+    const brief = "Геннадий, привет! Хочу обсудить проект.\nФормат работы: " + format + ".\n" +
       (task.trim() || "Расскажу о задаче и пришлю материалы.");
     async function copyBrief() {
       try {
@@ -341,7 +341,7 @@
         h("div", { className: "modal-header" },
           h(IconButton, { label: "Закрыть контакты", onClick: props.onClose }, icon(Close))),
         h("h2", { id: "contact-title" }, "ОБСУДИМ ПРОЕКТ"),
-        h("p", {}, "Расскажи о задаче, пришли материалы и примеры видео, которые тебе нравятся."),
+        h("p", {}, "Расскажи о задаче и о том, какой контент хочешь выпускать."),
         h("a", { className: "primary-button telegram-button", href: site.telegram,
           target: "_blank", rel: "noopener noreferrer" }, "Написать в Telegram", icon(Arrow)),
         h("div", { className: "contact-alternatives" },
@@ -349,15 +349,15 @@
           h("a", { href: "mailto:" + site.email }, site.email)),
         h("form", { className: "brief-form", onSubmit: function (event) { event.preventDefault(); copyBrief(); } },
           h("p", { className: "brief-intro" }, "Подготовить сообщение"),
-          h("label", {}, "Формат",
+          h("label", {}, "Формат работы",
             h("select", { value: format, onChange: function (event) { setFormat(event.target.value); setCopied(false); } },
-              ["Shorts / Reels", "Обзор / видео 16:9", "Серия роликов", "Событие / личная история"].map(function (label) {
+              ["Shorts / Reels", "Обзор / видео 16:9", "Серия роликов", "Полное ведение контента", "Событие / личная история"].map(function (label) {
                 return h("option", { key: label }, label);
               }))),
           h("label", {}, "Задача",
             h("textarea", {
               rows: 3, maxLength: 4000, value: task,
-              placeholder: "О чём видео? Где его будут смотреть? Есть ли срок?",
+              placeholder: "Что нужно сделать, для каких площадок и в какие сроки?",
               onChange: function (event) { setTask(event.target.value); setCopied(false); },
             })),
           h("button", { type: "submit", className: "soft-button copy-brief" },
@@ -482,7 +482,7 @@
           h("img", { className: "scene-background", src: "assets/original/be332bd3aa62.webp", alt: "", fetchPriority: "high" }),
           h("div", { className: "hero-copy" },
             h("h1", {}, h("span", {}, "МОНТАЖ"), h("span", {}, "В ДВИЖЕНИИ.")),
-            h("p", { className: "hero-description" }, "Короткие ролики, обзоры", h("br"), "и большие фильмы."),
+            h("p", { className: "hero-description" }, "Монтаж видео", h("br"), "и ведение контента."),
             h("button", { type: "button", className: "hero-reel-button", onClick: playReel },
               icon(Play, { weight: "fill" }), "Смотреть шоурил", h("span", {}, time(site.showreelDuration))),
             h("a", { className: "hero-work-link", href: "#works" }, "Смотреть работы", icon(Arrow)),
@@ -543,6 +543,7 @@
             h("div", { className: "about-copy" },
               h("h3", {}, site.name),
               h("p", {}, "Монтирую видео для соцсетей, обзоры недвижимости и отелей, занятия йогой и личные проекты."),
+              h("p", {}, "Беру на себя полное ведение контента: подбираю идеи и референсы для съёмки, составляю контент-план и сопровождаю выпуск роликов."),
             ),
           ),
         ),

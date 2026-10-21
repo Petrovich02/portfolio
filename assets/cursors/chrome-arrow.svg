@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="chrome" x1="4" y1="4" x2="23" y2="29" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f3fdff"/>
+      <stop offset=".36" stop-color="#d3f3fc"/>
+      <stop offset=".62" stop-color="#83c4dc"/>
+      <stop offset="1" stop-color="#b1a0dd"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.1"/>
+    </filter>
+  </defs>
+  <path d="M4 3 25.5 13.8 15.5 17.3 10 27Z" fill="#83d9fa" opacity=".4" filter="url(#glow)"/>
+  <path d="m18.5 20.5 2-2 8 8-2 2Z" fill="url(#chrome)" stroke="#05131e" stroke-width="1.4" stroke-linejoin="round"/>
+  <path d="M4 3 25.5 13.8 15.5 17.3 10 27Z" fill="url(#chrome)" stroke="#05131e" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="m5.2 5.4 9.4 11.7-4.4 8.1Z" fill="#557dab" opacity=".7"/>
+  <path d="M4 3 25.5 13.8 15.5 17.3 10 27Z" fill="none" stroke="#d8f8ff" stroke-opacity=".9" stroke-width=".7" stroke-linejoin="round"/>
+  <path d="m5.7 4.8 9.4 12" fill="none" stroke="#efffff" stroke-width=".65"/>
+  <path d="m8.4 2.5 19.4 10" fill="none" stroke="#9ddcf4" stroke-opacity=".5" stroke-width=".65" stroke-linecap="round"/>
+</svg>

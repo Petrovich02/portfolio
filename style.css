@@ -9,14 +9,11 @@ body { min-width: 0; overflow-x: hidden; }
 button, a, input, textarea, select { outline-offset: 5px; }
 button:disabled { cursor: default; opacity: .3; transform: none; box-shadow: none; }
 button, a { -webkit-tap-highlight-color: transparent; }
-.personal-wordmark { display: grid; gap: 4px; letter-spacing: .17em; }
-.personal-wordmark > span { font-size: 18px; font-weight: 650; text-transform: uppercase; }
-.personal-wordmark small { font-size: 8px; letter-spacing: .32em; color: #9eb3c1; }
+.portfolio-wordmark { font-size: 17px; font-weight: 550; letter-spacing: .17em; }
 .site-header { height: 82px; }
 .site-header nav { gap: 30px; font-size: 13px; }
 .hero { height: 730px; }
 .hero-copy { top: 55px; width: 34%; }
-.hero-copy .hero-eyebrow { margin: 0 0 22px; font-size: 10px; letter-spacing: .19em; color: #a7d9e9; white-space: normal; }
 .hero-copy h1 { font-weight: 600; letter-spacing: -.035em; line-height: 1.02; text-shadow: 0 2px 18px #0008; }
 .hero-copy h1 span { width: auto; transform: none; letter-spacing: -.035em; }
 .hero-copy h1 span:first-child { font-size: clamp(90px, 9.35vw, 150px); line-height: 1.03; }
@@ -27,8 +24,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-reel-button > svg { width: 15px; height: 15px; }
 .hero-reel-button > span { color: #b0c3cf; font-size: 10px; padding-left: 11px; border-left: 1px solid #88b7c452; }
 .hero-work-link { display: flex; width: fit-content; margin-top: 17px; font-size: 12px; }
-.hero-footnote { position: absolute; bottom: 89px; left: var(--page-pad); max-width: 39%; color: #adc1ce; font-size: 10px; line-height: 1.9; }
-.hero-footnote span { color: #64899a; margin: 0 7px; }
 .scene-background { top: -82px; height: calc(100% + 170px); }
 .carousel { left: 40%; right: 2.5%; top: 0; }
 .orbit-card { border-width: 1px; }
@@ -48,7 +43,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .section-side > p { color: #a4b5c2; font-size: 12px; }
 .eyebrow { color: #9cb5c6; letter-spacing: .18em; font-size: 10px; }
 .showreel-section { padding-top: 57px; }
-.reel-duration { display: inline-block; color: #b3d6e5; font-size: 10px; letter-spacing: .12em; margin-top: 25px; }
 .reel-card { display: block; padding: 0; overflow: hidden; border: 1px solid #7296a8; border-radius: 16px; position: relative; width: 100%; aspect-ratio: 16/9; text-align: left; background: #0b1822; isolation: isolate; transition: border-color .25s, box-shadow .25s; }
 .reel-card:hover { border-color: #b6e7f7; box-shadow: 0 0 36px #82cffa16; }
 .reel-card > video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
@@ -116,6 +110,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .modal-header { position: sticky; top: -1px; background: #071019f5; z-index: 4; padding-bottom: 12px; margin-bottom: 16px; }
 .modal-header > span { font-size: 10px; letter-spacing: .12em; color: #b2c7d6; }
 .modal-header .icon-button { width: 44px; height: 44px; }
+.modal-header .icon-button:last-child { margin-left: auto; }
 .modal-body { display: grid; gap: 28px; align-items: start; }
 .modal-body.landscape { grid-template-columns: minmax(0,1.5fr) minmax(255px,1fr); }
 .modal-body.portrait { grid-template-columns: minmax(220px,.7fr) minmax(0,1fr); }
@@ -180,7 +175,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .section-container { grid-template-columns: 170px minmax(0,1fr); gap: 30px; }
   .hero-copy { width: 35%; }
   .carousel { left: 40%; right: 2%; }
-  .hero-footnote { max-width: 36%; }
   .hero-copy h1 span:first-child { font-size: clamp(84px,9.6vw,105px); }
   .hero-copy h1 span:last-child { font-size: clamp(45px,5.15vw,58px); }
   .hero-reel-button { padding: 13px 14px; gap: 9px; font-size: 11px; }
@@ -202,15 +196,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 @media (max-width: 760px) {
   .site-header { height: 76px; }
-  .personal-wordmark > span { font-size: 16px; }
-  .personal-wordmark small { font-size: 7px; }
+  .portfolio-wordmark { font-size: 15px; }
   .site-header nav { display: none; position: absolute; top: 67px; left: var(--page-pad); right: var(--page-pad); border: 1px solid #5d8192; background: #07121cf5; border-radius: 12px; padding: 22px; box-shadow: 0 15px 40px #0009; z-index: 20; }
   .site-header nav.menu-open { display: flex; flex-direction: column; align-items: stretch; gap: 23px; font-size: 14px; }
   .site-header .mobile-menu-toggle { display: inline-grid !important; width: 44px; height: 44px; }
   .site-header nav .contact-button { justify-content: space-between; }
   .hero { height: auto; min-height: 1040px; padding-bottom: 110px; }
   .hero-copy { position: relative; top: auto; left: auto; width: auto; padding: 26px var(--page-pad) 0; z-index: 4; }
-  .hero-copy .hero-eyebrow { font-size: 9px; margin-bottom: 18px; }
   .hero-copy h1 span:first-child { font-size: clamp(88px,17vw,128px); }
   .hero-copy h1 span:last-child { font-size: clamp(47px,9.25vw,69px); line-height: 1.15; }
   .hero-copy .hero-description { font-size: 13px; margin-top: 20px; max-width: 330px; }
@@ -227,8 +219,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .orbit-label { font-size: 12px; }
   .orbit-count { font-size: 8px; }
   .scene-background { top: 240px; left: -55%; width: 205%; height: 790px; object-fit: cover; object-position: center 58%; opacity: .8; }
-  .hero-footnote { bottom: 65px; max-width: calc(100% - 48px); margin: 0; font-size: 9px; }
-  .hero-footnote span { margin: 0 5px; }
   .motion-switch { bottom: 20px; font-size: 9px; }
   .section-container { display: block; padding: 37px 0 43px; }
   .section-side { margin-bottom: 27px; }
@@ -239,7 +229,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .section-side > .eyebrow { font-size: 9px; margin-bottom: 13px; }
   .showreel-section .display-title br { display: none; }
   .showreel-section .display-title { font-size: 42px; }
-  .reel-duration { margin-top: 4px; font-size: 9px; }
   .reel-card { aspect-ratio: 16/10; border-radius: 12px; }
   .reel-kicker { left: 16px; top: 16px; font-size: 8px; }
   .reel-caption { left: 16px; right: 16px; bottom: 16px; gap: 9px; }
@@ -284,7 +273,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .direct-contacts { flex-direction: column; gap: 16px; font-size: 11px; margin-top: 27px; }
   .site-footer { padding: 25px 0; gap: 18px; }
   .site-footer .wordmark { font-size: 11px; }
-  .site-footer > span { font-size: 9px; }
+  .site-footer > span { font-size: 9px; order: 0; width: auto; }
   .site-footer > a:last-child { font-size: 10px; }
   .showreel-modal { width: min(calc(100vw - 20px),calc((100dvh - 20px)*16/9)); border-radius: 10px; }
   .showreel-close { top: 8px; right: 8px; }

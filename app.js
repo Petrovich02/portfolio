@@ -61,6 +61,30 @@
     try { return localStorage.getItem("portfolio-motion") !== "off"; } catch (_) { return true; }
   }
 
+  function AmbientBackdrop(props) {
+    const background = useRef(null);
+    const ribbon = useRef(null);
+    const renderer = useRef(null);
+    useEffect(function () {
+      if (!window.PortfolioAmbient) return;
+      renderer.current = window.PortfolioAmbient.create(background.current, ribbon.current);
+      return function () { if (renderer.current) renderer.current.destroy(); };
+    }, []);
+    useEffect(function () {
+      if (renderer.current) renderer.current.configure({ motion: props.motion, paused: props.paused });
+    }, [props.motion, props.paused]);
+    return h(React.Fragment, {},
+      h("div", { className: "ambient-backdrop" + (props.motion ? "" : " is-static") +
+        (props.paused ? " is-paused" : ""), "aria-hidden": true },
+        h("div", { className: "ambient-glow ambient-glow-cyan" }),
+        h("div", { className: "ambient-glow ambient-glow-violet" }),
+        h("div", { className: "ambient-glow ambient-glow-teal" }),
+        h("canvas", { ref: background, className: "ambient-contours" })),
+      h("canvas", { ref: ribbon, className: "pointer-ribbon" +
+        (!props.motion || props.paused ? " is-hidden" : ""), "aria-hidden": true }),
+    );
+  }
+
   function Orbit(props) {
     const featured = ["estate-talk", "estate-tours", "yoga-shorts", "hotels"].map(function (id) {
       return projects.find(function (project) { return project.id === id; });
@@ -464,6 +488,7 @@
       hero.current.style.setProperty("--pointer-y", "0px");
     }
     return h("div", { id: "top", className: "site-shell" + (motion ? "" : " reduce-motion") },
+      h(AmbientBackdrop, { motion: motion, paused: !!activeProject || contact }),
       h("a", { className: "skip-link", href: "#works" }, "Перейти к работам"),
       h("header", { className: "site-header" },
         h("a", { className: "wordmark portfolio-wordmark", href: "#top", "aria-label": "Портфолио — наверх" }, "ПОРТФОЛИО"),

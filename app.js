@@ -365,6 +365,7 @@
           h("p", { className: "contact-note", role: "status" }, copied
             ? "Отправь сообщение в Telegram или по почте."
             : "Скопируй сообщение и отправь его в Telegram или по почте."),
+          h("a", { className: "contact-privacy", href: "privacy.html", target: "_blank", rel: "noopener" }, "Политика конфиденциальности"),
           fallback ? h("label", { className: "copy-fallback" }, "Скопируй текст вручную",
             h("textarea", { readOnly: true, value: brief, rows: 4, onFocus: function (event) { event.target.select(); } })) : null,
         ),
@@ -559,7 +560,8 @@
       h("footer", { className: "site-footer" },
         h("span", {}, site.name + " · " + new Date().getFullYear()),
         h("nav", { className: "footer-documents", "aria-label": "Документы" },
-          h("a", { href: "offer.html" }, "Оферта")),
+          h("a", { href: "offer.html" }, "Оферта"),
+          h("a", { href: "privacy.html" }, "Политика конфиденциальности")),
         h("a", { href: "#top" }, "Наверх", icon(Arrow))),
       activeProject ? h(activeProject.id === "showreel" ? ShowreelDialog : ProjectDialog, {
         key: activeProject.id, project: activeProject, motion: motion,

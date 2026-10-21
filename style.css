@@ -97,6 +97,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .footer-documents { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 24px; font-size: 11px; line-height: 1.8; }
 .footer-documents a { color: #a7becc; text-underline-offset: 4px; }
 .footer-documents a:hover { color: #d5f4ff; }
+.contact-privacy { display: inline-block; margin: 0 0 8px; font-size: 11px; color: #a7becc; text-underline-offset: 4px; }
 .showreel-modal { width: min(1280px,calc(100vw - 48px),calc((100dvh - 48px)*16/9)); max-width: none; max-height: none; margin: auto; padding: 0; border: 0; border-radius: 14px; overflow: visible; background: transparent; color: #edfaff; animation: reel-enter .28s cubic-bezier(.2,.8,.2,1) both; }
 .showreel-modal::backdrop { background: rgb(2 6 10 / 52%); animation: reel-backdrop-enter .28s ease both; }
 .showreel-modal.is-closing { pointer-events: none; animation: reel-exit .2s ease-in both; }

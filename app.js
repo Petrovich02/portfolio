@@ -558,6 +558,8 @@
       ),
       h("footer", { className: "site-footer" },
         h("span", {}, site.name + " · " + new Date().getFullYear()),
+        h("nav", { className: "footer-documents", "aria-label": "Документы" },
+          h("a", { href: "offer.html" }, "Оферта")),
         h("a", { href: "#top" }, "Наверх", icon(Arrow))),
       activeProject ? h(activeProject.id === "showreel" ? ShowreelDialog : ProjectDialog, {
         key: activeProject.id, project: activeProject, motion: motion,

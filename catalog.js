@@ -6,7 +6,7 @@ window.PORTFOLIO_CATALOG = [
     "title": "ОтельЗорро",
     "subtitle": "Обзоры отелей",
     "summary": "Barceló Maya Palace, Grand Riviera Princess и RIU Tequila. Обзоры с ведущим.",
-    "poster": "assets/posters/work-051.webp",
+    "poster": "assets/covers/hotels-v1.webp",
     "portrait": false,
     "aspect": "3840 / 1812",
     "tags": [
@@ -58,7 +58,8 @@ window.PORTFOLIO_CATALOG = [
         "excerptStart": 0,
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239021&hash=bfbba7b583d30fc7&hd=4"
       }
-    ]
+    ],
+    "coverPosition": "center"
   },
   {
     "id": "estate-talk",
@@ -66,7 +67,7 @@ window.PORTFOLIO_CATALOG = [
     "title": "Недвижимость",
     "subtitle": "Разговорные ролики",
     "summary": "Ипотека, маткапитал и другие вопросы о недвижимости. Разговорные ролики с титрами.",
-    "poster": "assets/posters/work-044.webp",
+    "poster": "assets/covers/estate-talk-v1.webp",
     "portrait": true,
     "aspect": "1080 / 1920",
     "tags": [
@@ -227,7 +228,7 @@ window.PORTFOLIO_CATALOG = [
     "title": "Обзоры недвижимости",
     "subtitle": "Квартиры и жилые комплексы",
     "summary": "Квартира в Тюмени, «Речной порт», «Чайка» и другие обзоры недвижимости.",
-    "poster": "assets/posters/work-062.webp",
+    "poster": "assets/covers/estate-tours-v1.webp",
     "portrait": true,
     "aspect": "1080 / 1920",
     "tags": [
@@ -316,7 +317,8 @@ window.PORTFOLIO_CATALOG = [
         "excerptStart": 0,
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239018&hash=dfcc28c30a75996a&hd=3"
       }
-    ]
+    ],
+    "coverPosition": "center 42%"
   },
   {
     "id": "yoga-shorts",
@@ -324,7 +326,7 @@ window.PORTFOLIO_CATALOG = [
     "title": "Йога и упражнения",
     "subtitle": "Shorts / Reels",
     "summary": "Короткие видео с упражнениями, титрами и счётчиками.",
-    "poster": "assets/posters/work-001.webp",
+    "poster": "assets/covers/yoga-shorts-v1.webp",
     "portrait": true,
     "aspect": "1080 / 1920",
     "tags": [
@@ -789,7 +791,8 @@ window.PORTFOLIO_CATALOG = [
         "isExcerpt": false,
         "excerptStart": 0
       }
-    ]
+    ],
+    "coverPosition": "center 65%"
   },
   {
     "id": "estate-stories",
@@ -797,7 +800,7 @@ window.PORTFOLIO_CATALOG = [
     "title": "Риелторские истории",
     "subtitle": "Юмор о работе риелтора",
     "summary": "Короткие сценки и рабочие ситуации для социальных сетей.",
-    "poster": "assets/posters/work-047.webp",
+    "poster": "assets/covers/estate-stories-v1.webp",
     "portrait": true,
     "aspect": "1080 / 1920",
     "tags": [
@@ -932,7 +935,7 @@ window.PORTFOLIO_CATALOG = [
     "title": "Короткие истории",
     "subtitle": "Анимация и юмор",
     "summary": "Анимационные и юмористические ролики для социальных сетей.",
-    "poster": "assets/posters/work-066.webp",
+    "poster": "assets/covers/feed-stories-v1.webp",
     "portrait": true,
     "aspect": "1080 / 1920",
     "tags": [
@@ -1002,7 +1005,7 @@ window.PORTFOLIO_CATALOG = [
     "title": "Занятие NoStress",
     "subtitle": "Йога",
     "summary": "Полная запись занятия с инструктором.",
-    "poster": "assets/posters/work-046.webp",
+    "poster": "assets/covers/yoga-class-v1.webp",
     "portrait": false,
     "aspect": "1920 / 1080",
     "tags": [
@@ -1026,7 +1029,8 @@ window.PORTFOLIO_CATALOG = [
         "excerptStart": 0,
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239029&hash=b2494a0ff64ca53e&hd=4"
       }
-    ]
+    ],
+    "coverPosition": "center 65%"
   },
   {
     "id": "wedding",
@@ -1034,7 +1038,7 @@ window.PORTFOLIO_CATALOG = [
     "title": "Свадебный фильм",
     "subtitle": "Полная версия",
     "summary": "Свадебный фильм целиком.",
-    "poster": "assets/posters/work-060.webp",
+    "poster": "assets/covers/wedding-v1.webp",
     "portrait": false,
     "aspect": "1920 / 1080",
     "tags": [
@@ -1057,7 +1061,8 @@ window.PORTFOLIO_CATALOG = [
         "excerptStart": 0,
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239022&hash=1ddbae20c7063b70&hd=4"
       }
-    ]
+    ],
+    "coverPosition": "center 36%"
   },
   {
     "id": "golden-ring",
@@ -1065,7 +1070,7 @@ window.PORTFOLIO_CATALOG = [
     "title": "Золотое кольцо",
     "subtitle": "Видео с мероприятия",
     "summary": "Ролик с мероприятия под музыку.",
-    "poster": "assets/posters/work-043.webp",
+    "poster": "assets/covers/golden-ring-v1.webp",
     "portrait": false,
     "aspect": "1920 / 1080",
     "tags": [
@@ -1096,7 +1101,7 @@ window.PORTFOLIO_CATALOG = [
     "title": "День рождения",
     "subtitle": "Фотоколлаж",
     "summary": "Поздравительный ролик из фотографий.",
-    "poster": "assets/posters/work-041.webp",
+    "poster": "assets/covers/birthday-v1.webp",
     "portrait": false,
     "aspect": "1920 / 1080",
     "tags": [

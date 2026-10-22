@@ -96,11 +96,14 @@
     useEffect(function () {
       if (mascot.current) mascot.current.configure({ motion: props.motion, paused: props.paused });
     }, [props.motion, props.paused]);
-    return h("div", { className: "site-mascot", ref: element, "aria-hidden": true },
-      h("div", { className: "mascot-body" },
-        h("img", { src: "assets/images/gennady-mascot-v1.webp", alt: "", width: 512, height: 512, draggable: false })),
-      h("div", { className: "mascot-hands" },
-        h("img", { src: "assets/images/gennady-mascot-v1.webp", alt: "", width: 512, height: 512, draggable: false })));
+    const poses = { peek: "gennady-mascot-v2", work: "gennady-work-v1", wave: "gennady-wave-v1", contact: "gennady-contact-v1" };
+    return h("div", { className: "site-mascot", ref: element, "aria-hidden": true, "data-pose": "peek" },
+      Object.keys(poses).map(function (pose) {
+        const image = { src: "assets/images/" + poses[pose] + ".webp", alt: "", width: 512, height: 512, draggable: false };
+        return h("div", { key: pose, className: "mascot-pose mascot-pose-" + pose },
+          h("div", { className: "mascot-body" }, h("img", image)),
+          h("div", { className: "mascot-hands" }, h("img", image)));
+      }));
   }
 
   function Orbit(props) {
@@ -171,7 +174,7 @@
             if (offset === 0) props.onOpen(project); else select(index);
           },
         },
-          h("img", { src: project.poster, alt: "", draggable: false, fetchPriority: visible ? "high" : "auto" }),
+          h("img", { src: project.poster, alt: "", style: { objectPosition: project.coverPosition }, draggable: false, fetchPriority: visible ? "high" : "auto" }),
           h(PlayMark, {}),
           h("span", { className: "orbit-label" }, project.title),
           h("span", { className: "orbit-count" }, project.media.length + " видео"),
@@ -203,7 +206,7 @@
       onClick: function () { props.onOpen(project); }, "aria-label": "Открыть проект: " + project.title,
     },
       h("div", { className: "project-image", style: { "--aspect": project.aspect } },
-        h("img", { src: project.poster, alt: "", loading: "lazy", decoding: "async" }),
+        h("img", { src: project.poster, alt: "", style: { objectPosition: project.coverPosition }, loading: "lazy", decoding: "async" }),
         h(PlayMark, { small: !props.featured }),
         props.featured ? h("div", { className: "featured-title" },
           h("span", {}, "ОБЗОРЫ ОТЕЛЕЙ"), h("h3", {}, project.title)) : null,
@@ -575,7 +578,7 @@
             h("h2", { className: "display-title smaller" }, "ОБО МНЕ"),
           ),
           h("div", { className: "about-content" },
-            h("figure", { className: "about-portrait" },
+            h("figure", { className: "about-portrait", "data-mascot": "wave" },
               h("img", {
                 src: "assets/images/gennady-studio-v1-640.webp",
                 srcSet: "assets/images/gennady-studio-v1-640.webp 640w, assets/images/gennady-studio-v1-1120.webp 1120w",
@@ -607,7 +610,8 @@
             ),
           ),
         ),
-        h("section", { className: "contact-section", id: "contact" },
+        h("section", { className: "contact-section", id: "contact", "data-mascot": "contact" },
+          h("span", { className: "contact-mascot-edge", "aria-hidden": true }),
           h("h2", {}, "ОБСУДИМ", h("br"), h("span", {}, "ТВОЙ ПРОЕКТ")),
           h("button", { type: "button", className: "contact-hero-button", onClick: showContact }, "Обсудить проект", icon(Arrow)),
           h("div", { className: "direct-contacts" },

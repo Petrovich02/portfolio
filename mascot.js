@@ -18,7 +18,7 @@
     function position() {
       frame = 0;
       if (!card || !point || !enabled || !finePointer.matches || document.hidden || window.innerWidth <= 760) return hide();
-      const surface = card.querySelector(".project-image") || card;
+      const surface = card.querySelector(".contact-mascot-edge, .project-image") || card;
       const bounds = surface.getBoundingClientRect();
       const size = element.offsetWidth;
       if (!card.isConnected || card.classList.contains("is-hidden") || bounds.width < size + 16 || bounds.top < size * 0.87 + 8 ||
@@ -53,7 +53,7 @@
     }
 
     function findCard(target) {
-      return target instanceof Element ? target.closest(".orbit-card:not(.is-hidden), .project-card") : null;
+      return target instanceof Element ? target.closest(".orbit-card:not(.is-hidden), .project-card, [data-mascot]") : null;
     }
 
     function over(event) {
@@ -66,6 +66,8 @@
       if (next === card) return schedulePosition();
       hide();
       card = next;
+      const pose = next.getAttribute("data-mascot") || (next.classList.contains("orbit-card") ? "peek" : "work");
+      element.setAttribute("data-pose", ["peek", "work", "wave", "contact"].includes(pose) ? pose : "peek");
       point = { x: event.clientX, y: event.clientY };
       settleUntil = performance.now() + 1200;
       position();

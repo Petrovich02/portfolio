@@ -97,7 +97,9 @@
       if (mascot.current) mascot.current.configure({ motion: props.motion, paused: props.paused });
     }, [props.motion, props.paused]);
     return h("div", { className: "site-mascot", ref: element, "aria-hidden": true },
-      h("div", { className: "mascot-window" },
+      h("div", { className: "mascot-body" },
+        h("img", { src: "assets/images/gennady-mascot-v1.webp", alt: "", width: 512, height: 512, draggable: false })),
+      h("div", { className: "mascot-hands" },
         h("img", { src: "assets/images/gennady-mascot-v1.webp", alt: "", width: 512, height: 512, draggable: false })));
   }
 

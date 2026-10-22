@@ -21,11 +21,11 @@
       const surface = card.querySelector(".project-image") || card;
       const bounds = surface.getBoundingClientRect();
       const size = element.offsetWidth;
-      if (!card.isConnected || card.classList.contains("is-hidden") || bounds.width < size + 16 || bounds.top < 64 ||
+      if (!card.isConnected || card.classList.contains("is-hidden") || bounds.width < size + 16 || bounds.top < size * 0.87 + 8 ||
           bounds.top > window.innerHeight - 48) return hide();
       const left = Math.max(8, bounds.left + 8);
       const right = Math.min(window.innerWidth - size - 8, bounds.right - size - 8);
-      const y = Math.max(8, bounds.top - size * 0.87);
+      const y = bounds.top - size * 0.87;
       const candidates = [point.x - size / 2, bounds.left + bounds.width * 0.72 - size / 2,
         bounds.left + bounds.width * 0.28 - size / 2];
       const x = candidates.map(function (value) { return Math.max(left, Math.min(right, value)); })

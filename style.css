@@ -58,8 +58,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .motion-switch { bottom: 27px; font-size: 10px; }
 .section-container { border-color: #60788877; grid-template-columns: 220px minmax(0, 1fr); gap: 42px; padding: 60px 0 70px; }
 .section-side > .eyebrow { display: block; margin-bottom: 17px; }
-.display-title { font-size: clamp(70px, 7.1vw, 100px); font-weight: 500; letter-spacing: -.025em; text-shadow: none; }
-.display-title.smaller { font-size: clamp(47px, 4.7vw, 66px); line-height: 1.13; letter-spacing: -.02em; }
+.display-title, .display-title.smaller { font-size: clamp(47px, 4.7vw, 66px); font-weight: 500; line-height: 1.22; letter-spacing: -.02em; text-shadow: none; }
+.works-section .section-side { display: block; }
 .section-side > p { color: #a4b5c2; font-size: 12px; }
 .eyebrow { color: #9cb5c6; letter-spacing: .18em; font-size: 10px; }
 .showreel-section { padding-top: 57px; }
@@ -112,7 +112,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .tool-vendor { display: block; color: #8fa6b7; font-size: 9px; line-height: 1.6; }
 .format-line { font-size: 11px; color: #bed0dd; flex-wrap: wrap; }
 .contact-section { margin: 0 var(--page-pad); padding: 70px 0 65px; }
-.contact-section h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.025em; font-size: clamp(48px,6.2vw,90px); line-height: 1.16; text-shadow: none; }
+.contact-section h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.025em; font-size: clamp(48px,6.2vw,90px); line-height: 1.36; text-shadow: none; }
 .contact-section h2 span { color: #c0deeb; }
 .contact-hero-button { font-size: 13px; }
 .direct-contacts { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; margin-top: 32px; font-size: 12px; color: #9fb8c9; }
@@ -210,8 +210,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .section-container { grid-template-columns: 170px minmax(0,1fr); gap: 30px; }
   .hero-reel-button { padding: 13px 14px; gap: 9px; font-size: 11px; }
   .hero-reel-button > span { font-size: 9px; padding-left: 8px; }
-  .display-title { font-size: 72px; }
-  .display-title.smaller { font-size: 46px; }
+  .display-title, .display-title.smaller { font-size: 46px; }
   .works-toolbar { display: block; }
   .filter-status { font-size: 9px; margin-top: 13px; }
   .filters button { padding: 8px 13px; font-size: 10px; }
@@ -250,11 +249,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .section-side { margin-bottom: 27px; }
   .section-side > p { font-size: 12px; line-height: 1.8; margin-top: 15px; }
   .section-side > p br { display: none; }
-  .display-title { font-size: 64px; }
-  .display-title.smaller { font-size: 45px; }
+  .display-title, .display-title.smaller { font-size: 44px; }
   .section-side > .eyebrow { font-size: 9px; margin-bottom: 13px; }
   .showreel-section .display-title br { display: none; }
-  .showreel-section .display-title { font-size: 42px; }
   .reel-card { aspect-ratio: 16/10; border-radius: 12px; }
   .reel-kicker { left: 16px; top: 16px; font-size: 8px; }
   .reel-caption { left: 16px; right: 16px; bottom: 16px; gap: 9px; }
@@ -297,7 +294,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .format-line { font-size: 10px; gap: 17px; margin-top: 24px; padding-top: 19px; }
   .contact-section { padding: 44px 0; }
   .contact-section > .eyebrow { font-size: 9px; }
-  .contact-section h2 { font-size: clamp(37px,8.9vw,65px); margin: 22px 0 28px; line-height: 1.2; }
+  .contact-section h2 { font-size: clamp(37px,8.9vw,65px); margin: 22px 0 28px; }
   .contact-hero-button { font-size: 12px; width: 100%; padding: 15px 20px; justify-content: space-between; }
   .direct-contacts { flex-direction: column; gap: 16px; font-size: 11px; margin-top: 27px; }
   .site-footer { padding: 25px 0; gap: 18px; }

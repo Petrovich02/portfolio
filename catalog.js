@@ -1124,9 +1124,9 @@ window.PORTFOLIO_CATALOG = [
   {
     "id": "birthday",
     "category": "stories",
-    "title": "День рождения",
-    "subtitle": "Фотоколлаж",
-    "summary": "Поздравительный ролик из фотографий.",
+    "title": "Слайд-шоу",
+    "subtitle": "Поздравительные коллажи",
+    "summary": "Ролики из фотографий ко дням рождения и другим праздникам.",
     "poster": "assets/covers/birthday-v1.webp",
     "portrait": false,
     "aspect": "1920 / 1080",
@@ -1149,6 +1149,42 @@ window.PORTFOLIO_CATALOG = [
         "isExcerpt": false,
         "excerptStart": 0,
         "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239017&hash=c9d885a77ebff537&hd=4"
+      },
+      {
+        "id": "vk-456239057",
+        "title": "Поздравительный клип",
+        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239057&hash=4780e8cb4005c3b1&hd=4",
+        "poster": null,
+        "duration": null,
+        "playbackDuration": null,
+        "isExcerpt": false,
+        "excerptStart": 0,
+        "aspect": "16 / 9",
+        "portrait": false
+      },
+      {
+        "id": "vk-456239056",
+        "title": "Праздничный коллаж",
+        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239056&hash=9adea93d0269c919&hd=4",
+        "poster": null,
+        "duration": null,
+        "playbackDuration": null,
+        "isExcerpt": false,
+        "excerptStart": 0,
+        "aspect": "16 / 9",
+        "portrait": false
+      },
+      {
+        "id": "vk-456239058",
+        "title": "С днём рождения!",
+        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239058&hash=2e8de1b64574fabc&hd=3",
+        "poster": "assets/posters/work-078.webp",
+        "duration": 258.042,
+        "playbackDuration": 258.042,
+        "isExcerpt": false,
+        "excerptStart": 0,
+        "aspect": "1920 / 1080",
+        "portrait": false
       }
     ]
   }

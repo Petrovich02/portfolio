@@ -17,6 +17,7 @@
       ? site.mediaBaseUrl.replace(/\/$/, "") + "/" + path.slice("assets/video/".length) : path;
   }
   function time(seconds) {
+    if (typeof seconds !== "number" || !Number.isFinite(seconds) || seconds < 0) return "";
     const total = Math.floor(seconds);
     const minutes = Math.floor(total / 60);
     return (minutes >= 60 ? Math.floor(minutes / 60) + ":" + String(minutes % 60).padStart(2, "0") : minutes) +
@@ -299,9 +300,9 @@
             ),
             h("div", { className: "player-caption" },
               h("span", {}, current.title),
-              h("span", {}, current.isExcerpt
+              current.duration != null ? h("span", {}, current.isExcerpt
                 ? "Фрагмент " + time(current.playbackDuration) + " / " + time(current.duration)
-                : time(current.duration)),
+                : time(current.duration)) : null,
             ),
             current.isExcerpt ? h("p", { className: "excerpt-note" },
               "Фрагмент работы. Полная длительность — " + time(current.duration) + ".") : null,
@@ -326,10 +327,11 @@
                     key: item.id, type: "button", className: selected === index ? "active" : "",
                     "aria-pressed": selected === index, onClick: function () { choose(index); },
                   },
-                    h("img", { src: item.poster, alt: "", loading: "lazy" }),
+                    item.poster ? h("img", { src: item.poster, alt: "", loading: "lazy" })
+                      : h("span", { className: "episode-placeholder", "aria-hidden": true }, icon(Play)),
                     h("span", {}, h("small", {}, String(index + 1).padStart(2, "0")),
-                      item.title, h("small", { className: "episode-time" }, time(item.duration) +
-                        (item.isExcerpt ? " · фрагмент " + time(item.playbackDuration) : ""))),
+                      item.title, item.duration != null ? h("small", { className: "episode-time" }, time(item.duration) +
+                        (item.isExcerpt ? " · фрагмент " + time(item.playbackDuration) : "")) : null),
                     icon(Play, { weight: "fill" }),
                   );
                 }),

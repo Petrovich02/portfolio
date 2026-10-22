@@ -219,6 +219,32 @@ window.PORTFOLIO_CATALOG = [
         "playbackDuration": 146.843,
         "isExcerpt": false,
         "excerptStart": 0
+      },
+      {
+        "id": "work-074",
+        "title": "Квартира мечты",
+        "poster": "assets/posters/work-074.webp",
+        "src": "assets/video/work-074.mp4",
+        "source": "Квартира мечты.mp4",
+        "aspect": "1080 / 1920",
+        "portrait": true,
+        "duration": 51.967,
+        "playbackDuration": 51.967,
+        "isExcerpt": false,
+        "excerptStart": 0
+      },
+      {
+        "id": "work-075",
+        "title": "Не та квартира",
+        "poster": "assets/posters/work-075.webp",
+        "src": "assets/video/work-075.mp4",
+        "source": "Не та квартира.mp4",
+        "aspect": "1080 / 1920",
+        "portrait": true,
+        "duration": 36.667,
+        "playbackDuration": 36.667,
+        "isExcerpt": false,
+        "excerptStart": 0
       }
     ]
   },

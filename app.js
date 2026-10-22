@@ -85,6 +85,22 @@
     );
   }
 
+  function SiteMascot(props) {
+    const element = useRef(null);
+    const mascot = useRef(null);
+    useEffect(function () {
+      if (!window.PortfolioMascot) return;
+      mascot.current = window.PortfolioMascot.create(element.current);
+      return function () { if (mascot.current) mascot.current.destroy(); };
+    }, []);
+    useEffect(function () {
+      if (mascot.current) mascot.current.configure({ motion: props.motion, paused: props.paused });
+    }, [props.motion, props.paused]);
+    return h("div", { className: "site-mascot", ref: element, "aria-hidden": true },
+      h("div", { className: "mascot-window" },
+        h("img", { src: "assets/images/gennady-mascot-v1.webp", alt: "", width: 512, height: 512, draggable: false })));
+  }
+
   function Orbit(props) {
     const featured = ["estate-talk", "estate-tours", "yoga-shorts", "hotels"].map(function (id) {
       return projects.find(function (project) { return project.id === id; });
@@ -489,6 +505,7 @@
     }
     return h("div", { id: "top", className: "site-shell" + (motion ? "" : " reduce-motion") },
       h(AmbientBackdrop, { motion: motion, paused: !!activeProject || contact }),
+      h(SiteMascot, { motion: motion, paused: !!activeProject || contact || menu }),
       h("a", { className: "skip-link", href: "#works" }, "Перейти к работам"),
       h("header", { className: "site-header" },
         h("h1", { className: "site-title", "aria-label": "Портфолио" },

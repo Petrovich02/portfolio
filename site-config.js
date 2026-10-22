@@ -6,7 +6,7 @@ window.PORTFOLIO_CONFIG = {
   phone: "+79994536237",
   phoneLabel: "+7 999 453-62-37",
   email: "bdv121091@gmail.com",
-  title: "Монтаж в движении",
+  title: "Портфолио",
   showreel: "assets/video/showreel.mp4?v=human-dynamic-1",
   showreelLoop: "assets/video/showreel-loop.mp4?v=human-dynamic-1",
   showreelPoster: "assets/posters/showreel.webp?v=human-dynamic-1",

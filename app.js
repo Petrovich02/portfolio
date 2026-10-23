@@ -2,7 +2,7 @@
   "use strict";
 
   const { React, ReactDOM, Mu: Arrow, Yo: Left, Lo: Right, bf: Play,
-    Jo: Pause, Ef: Close, Ko: Menu, Xo: Copy, Go: Check } = window.PortfolioRuntime;
+    Jo: Pause, Ef: Close, Ko: Menu } = window.PortfolioRuntime;
   const { createElement: h, useState, useEffect, useRef } = React;
   const site = window.PORTFOLIO_CONFIG;
   const projects = window.PORTFOLIO_CATALOG;
@@ -355,71 +355,6 @@
     );
   }
 
-  function ContactDialog(props) {
-    const dialog = useRef(null);
-    const [format, setFormat] = useState("Shorts / Reels");
-    const [task, setTask] = useState("");
-    const [copied, setCopied] = useState(false);
-    const [fallback, setFallback] = useState(false);
-    useDialog(dialog);
-    const brief = "Геннадий, привет! Хочу обсудить проект.\nФормат работы: " + format + ".\n" +
-      (task.trim() || "Расскажу о задаче и пришлю материалы.");
-    async function copyBrief() {
-      try {
-        if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(brief);
-        else {
-          const field = document.createElement("textarea");
-          field.value = brief;
-          field.style.cssText = "position:fixed;opacity:0";
-          dialog.current.appendChild(field);
-          field.select();
-          const success = document.execCommand("copy");
-          field.remove();
-          if (!success) throw new Error("copy");
-        }
-        setCopied(true); setFallback(false);
-      } catch (_) { setFallback(true); }
-    }
-    return h("dialog", {
-      ref: dialog, className: "contact-modal", "aria-labelledby": "contact-title",
-      onCancel: props.onClose, onClick: function (event) { if (event.target === dialog.current) props.onClose(); },
-    },
-      h("div", { className: "contact-modal-content" },
-        h("div", { className: "modal-header" },
-          h(IconButton, { label: "Закрыть контакты", onClick: props.onClose }, icon(Close))),
-        h("h2", { id: "contact-title" }, "ОБСУДИМ ПРОЕКТ"),
-        h("p", {}, "Расскажи о задаче и о том, какой контент хочешь выпускать."),
-        h("a", { className: "primary-button telegram-button", href: site.telegram,
-          target: "_blank", rel: "noopener noreferrer" }, "Написать в Telegram", icon(Arrow)),
-        h("div", { className: "contact-alternatives" },
-          h("a", { href: "tel:" + site.phone }, site.phoneLabel),
-          h("a", { href: "mailto:" + site.email }, site.email)),
-        h("form", { className: "brief-form", onSubmit: function (event) { event.preventDefault(); copyBrief(); } },
-          h("p", { className: "brief-intro" }, "Подготовить сообщение"),
-          h("label", {}, "Формат работы",
-            h("select", { value: format, onChange: function (event) { setFormat(event.target.value); setCopied(false); } },
-              ["Shorts / Reels", "Обзор / видео 16:9", "Серия роликов", "Полное ведение контента", "Событие / личная история"].map(function (label) {
-                return h("option", { key: label }, label);
-              }))),
-          h("label", {}, "Задача",
-            h("textarea", {
-              rows: 3, maxLength: 4000, value: task,
-              placeholder: "Что нужно сделать, для каких площадок и в какие сроки?",
-              onChange: function (event) { setTask(event.target.value); setCopied(false); },
-            })),
-          h("button", { type: "submit", className: "soft-button copy-brief" },
-            icon(copied ? Check : Copy), copied ? "Сообщение скопировано" : "Скопировать сообщение"),
-          h("p", { className: "contact-note", role: "status" }, copied
-            ? "Отправь сообщение в Telegram или по почте."
-            : "Скопируй сообщение и отправь его в Telegram или по почте."),
-          h("a", { className: "contact-privacy", href: "privacy.html", target: "_blank", rel: "noopener" }, "Политика конфиденциальности"),
-          fallback ? h("label", { className: "copy-fallback" }, "Скопируй текст вручную",
-            h("textarea", { readOnly: true, value: brief, rows: 4, onFocus: function (event) { event.target.select(); } })) : null,
-        ),
-      ),
-    );
-  }
-
   function ShowreelSection(props) {
     const video = useRef(null);
     const wrapper = useRef(null);
@@ -458,7 +393,6 @@
   function App() {
     const [filter, setFilter] = useState("all");
     const [activeProject, setActiveProject] = useState(null);
-    const [contact, setContact] = useState(false);
     const [menu, setMenu] = useState(false);
     const [motion, setMotion] = useState(getMotionPreference);
     const hero = useRef(null);
@@ -470,7 +404,6 @@
     const featured = visible.find(function (project) { return project.id === "hotels"; });
     const stories = projects.filter(function (project) { return project.category === "stories"; });
     const closeMenu = function () { setMenu(false); };
-    const showContact = function () { closeMenu(); setContact(true); };
     const playReel = function () { closeMenu(); setActiveProject({ id: "showreel" }); };
     useEffect(function () {
       document.documentElement.style.scrollBehavior = motion ? "smooth" : "auto";
@@ -511,8 +444,8 @@
       hero.current.style.setProperty("--pointer-y", "0px");
     }
     return h("div", { id: "top", className: "site-shell" + (motion ? "" : " reduce-motion") },
-      h(AmbientBackdrop, { motion: motion, paused: !!activeProject || contact }),
-      h(SiteMascot, { motion: motion, paused: !!activeProject || contact || menu }),
+      h(AmbientBackdrop, { motion: motion, paused: !!activeProject }),
+      h(SiteMascot, { motion: motion, paused: !!activeProject || menu }),
       h("a", { className: "skip-link", href: "#works" }, "Перейти к работам"),
       h("header", { className: "site-header" },
         h("h1", { className: "site-title", "aria-label": "Портфолио" },
@@ -521,7 +454,8 @@
           h("a", { href: "#showreel", onClick: closeMenu }, "Шоурил"),
           h("a", { href: "#works", onClick: closeMenu }, "Работы"),
           h("a", { href: "#about", onClick: closeMenu }, "Обо мне"),
-          h("button", { type: "button", className: "contact-button", onClick: showContact }, "Обсудить проект", icon(Arrow)),
+          h("a", { className: "contact-button", href: site.telegram, target: "_blank",
+            rel: "noopener noreferrer", onClick: closeMenu }, "Обсудить проект", icon(Arrow)),
         ),
         h(IconButton, {
           label: menu ? "Закрыть меню" : "Открыть меню", className: "icon-button mobile-menu-toggle",
@@ -542,7 +476,7 @@
             onClick: function () { setMotion(!motion); resetHero(); },
           }, icon(motion ? Pause : Play), motion ? "Уменьшить движение" : "Включить движение"),
         ),
-        h(ShowreelSection, { onPlay: playReel, motion: motion, modalOpen: !!activeProject || contact }),
+        h(ShowreelSection, { onPlay: playReel, motion: motion, modalOpen: !!activeProject }),
         h("section", { className: "works-section section-container", id: "works" },
           h("div", { className: "section-side" },
             h("h2", { className: "display-title" }, "РАБОТЫ"),
@@ -615,7 +549,8 @@
         h("section", { className: "contact-section", id: "contact", "data-mascot": "contact" },
           h("span", { className: "contact-mascot-edge", "aria-hidden": true }),
           h("h2", {}, "ОБСУДИМ", h("br"), h("span", {}, "ТВОЙ ПРОЕКТ")),
-          h("button", { type: "button", className: "contact-hero-button", onClick: showContact }, "Обсудить проект", icon(Arrow)),
+          h("a", { className: "contact-hero-button", href: site.telegram, target: "_blank",
+            rel: "noopener noreferrer" }, "Обсудить проект", icon(Arrow)),
           h("div", { className: "direct-contacts" },
             h("a", { href: site.telegram, target: "_blank", rel: "noopener noreferrer" }, "Telegram", icon(Arrow)),
             h("a", { href: "mailto:" + site.email }, site.email),
@@ -631,7 +566,6 @@
       activeProject ? h(activeProject.id === "showreel" ? ShowreelDialog : ProjectDialog, {
         key: activeProject.id, project: activeProject, motion: motion,
         onClose: function () { setActiveProject(null); } }) : null,
-      contact ? h(ContactDialog, { onClose: function () { setContact(false); } }) : null,
     );
   }
 

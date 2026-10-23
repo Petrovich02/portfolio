@@ -245,6 +245,19 @@ window.PORTFOLIO_CATALOG = [
         "playbackDuration": 36.667,
         "isExcerpt": false,
         "excerptStart": 0
+      },
+      {
+        "id": "work-079",
+        "title": "Квартира для дочери",
+        "poster": "assets/posters/work-079.webp",
+        "src": "assets/video/work-079.mp4",
+        "source": "Квартира для дочери.mp4",
+        "aspect": "1080 / 1920",
+        "portrait": true,
+        "duration": 75.433,
+        "playbackDuration": 75.433,
+        "isExcerpt": false,
+        "excerptStart": 0
       }
     ]
   },

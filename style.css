@@ -138,7 +138,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .contact-section h2 { width: fit-content; font-family: var(--display); font-weight: 500; letter-spacing: -.025em; font-size: clamp(48px,6.2vw,90px); line-height: 1.36; text-shadow: none; }
 .contact-mascot-edge { position: absolute; left: min(640px,calc(100% - 196px)); bottom: 132px; width: 196px; height: 1px; border-bottom: 1px solid #7397ad59; pointer-events: none; }
 .contact-section h2 span { color: #c0deeb; }
-.contact-hero-button { font-size: 13px; }
+.contact-hero-button { width: fit-content; font-size: 13px; }
 .direct-contacts { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; margin-top: 32px; font-size: 12px; color: #9fb8c9; }
 .direct-contacts > a { display: inline-flex; align-items: center; gap: 7px; transition: color .2s; }
 .direct-contacts svg { width: 15px; height: 15px; }

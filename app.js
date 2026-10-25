@@ -289,7 +289,9 @@
               current.embedUrl ? h("iframe", {
                 key: current.id + "-" + retry, src: current.embedUrl + "&autoplay=1", title: current.title,
                 className: "external-player", allowFullScreen: true,
-                allow: "autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock",
+                allow: "autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock; clipboard-write 'none'",
+                // Keep playback permissions without allowing popups or top-page navigation.
+                sandbox: "allow-scripts allow-same-origin allow-presentation",
                 referrerPolicy: "strict-origin-when-cross-origin",
                 onError: function () { setError(true); },
               }) : h("video", {

@@ -1075,20 +1075,32 @@ window.PORTFOLIO_CATALOG = [
     "id": "wedding",
     "category": "stories",
     "title": "Свадебный фильм",
-    "subtitle": "Полная версия",
-    "summary": "Свадебный фильм целиком.",
+    "subtitle": "Две версии",
+    "summary": "Короткий фильм с главными моментами и юмором — и полная версия свадьбы.",
     "poster": "assets/covers/wedding-v1.webp",
     "portrait": false,
     "aspect": "1920 / 1080",
     "tags": [
       "Свадьба",
-      "Личная история"
+      "2 версии"
     ],
     "format": "landscape",
     "media": [
       {
+        "id": "vk-456239059",
+        "title": "Короткая версия",
+        "embedUrl": "https://vkvideo.ru/video_ext.php?oid=-232982396&id=456239059&hash=2fb7e82d16e865ae&hd=3",
+        "poster": "assets/posters/wedding-short-v1.webp",
+        "duration": 577.16,
+        "playbackDuration": 577.16,
+        "isExcerpt": false,
+        "excerptStart": 0,
+        "aspect": "16 / 9",
+        "portrait": false
+      },
+      {
         "id": "work-060",
-        "title": "Свадебный фильм",
+        "title": "Полная версия",
         "poster": "assets/posters/work-060.webp",
         "src": "assets/video/work-060.mp4",
         "source": "СВАДЕБНЫЙ ФИЛЬМ.mp4",

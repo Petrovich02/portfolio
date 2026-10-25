@@ -3,21 +3,25 @@
 
   function create(element) {
     const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const automatic = window.matchMedia("(max-width: 760px), (hover: none), (pointer: coarse)");
+    const shown = new WeakSet();
     let enabled = false, destroyed = false, card = null, point = null;
     let revealTimer = 0, hideTimer = 0, frame = 0, settleUntil = 0;
+    let autoTimer = 0, nextAutoAt = 0;
 
     function hide() {
       clearTimeout(revealTimer);
       clearTimeout(hideTimer);
+      clearTimeout(autoTimer);
       cancelAnimationFrame(frame);
-      revealTimer = hideTimer = frame = 0;
+      revealTimer = hideTimer = autoTimer = frame = 0;
       card = point = null;
       element.classList.remove("is-visible");
     }
 
     function position() {
       frame = 0;
-      if (!card || !point || !enabled || !finePointer.matches || document.hidden || window.innerWidth <= 760) return hide();
+      if (!card || !point || !enabled || document.hidden || (!automatic.matches && !finePointer.matches)) return hide();
       const surface = card.querySelector(".contact-mascot-edge, .project-image") || card;
       const bounds = surface.getBoundingClientRect();
       const size = element.offsetWidth;
@@ -56,8 +60,85 @@
       return target instanceof Element ? target.closest(".orbit-card:not(.is-hidden), .project-card, [data-mascot]") : null;
     }
 
+    function setPose(next) {
+      const pose = next.getAttribute("data-mascot") || (next.classList.contains("orbit-card") ? "peek" : "work");
+      element.setAttribute("data-pose", ["peek", "work", "wave", "contact"].includes(pose) ? pose : "peek");
+    }
+
+    function scheduleAuto(delay) {
+      clearTimeout(autoTimer);
+      autoTimer = 0;
+      if (!enabled || !automatic.matches || document.hidden) return;
+      autoTimer = setTimeout(autoPeek, delay);
+    }
+
+    function autoPeek() {
+      autoTimer = 0;
+      if (!enabled || !automatic.matches || document.hidden) return;
+      const remaining = nextAutoAt - performance.now();
+      if (remaining > 0) return scheduleAuto(remaining);
+      // Scan only after scrolling settles; the catalogue has a small number of cards.
+      const candidates = Array.from(document.querySelectorAll(".orbit-card.is-active, .project-card, [data-mascot]"))
+        .filter(function (next) { return !shown.has(next); })
+        .map(function (next) {
+          const surface = next.querySelector(".contact-mascot-edge, .project-image") || next;
+          return { next: next, bounds: surface.getBoundingClientRect() };
+        })
+        .filter(function (item) {
+          return item.bounds.width > 0 && item.bounds.top > 0 && item.bounds.top < window.innerHeight * 0.78;
+        })
+        .sort(function (a, b) {
+          return Math.abs(a.bounds.top - window.innerHeight * 0.45) - Math.abs(b.bounds.top - window.innerHeight * 0.45);
+        });
+      for (const candidate of candidates) {
+        hide();
+        card = candidate.next;
+        point = { x: candidate.bounds.left + candidate.bounds.width * 0.72, y: candidate.bounds.top };
+        setPose(card);
+        settleUntil = performance.now() + 1200;
+        position();
+        if (!card) continue;
+        const next = card;
+        const image = element.querySelector(".mascot-pose-" + element.getAttribute("data-pose") + " .mascot-body img");
+        const ready = image && image.decode ? image.decode() : Promise.resolve();
+        ready.then(function () {
+          if (card !== next || !enabled || !automatic.matches || document.hidden) return;
+          revealTimer = setTimeout(function () {
+            revealTimer = 0;
+            if (card !== next || !enabled || !automatic.matches || document.hidden) return;
+            position();
+            if (!card) return;
+            element.classList.add("is-visible");
+            shown.add(next);
+            nextAutoAt = performance.now() + 7000;
+            hideTimer = setTimeout(hide, 2200);
+          }, 140);
+        }, function () { if (card === next) hide(); });
+        break;
+      }
+    }
+
+    function scroll() {
+      hide();
+      scheduleAuto(450);
+    }
+
+    function wake() {
+      hide();
+      scheduleAuto(600);
+    }
+
+    function release() {
+      if (automatic.matches) scheduleAuto(650);
+    }
+
+    function leave() {
+      // Touch pointers leave the document when the finger lifts after scrolling.
+      if (!automatic.matches) hide();
+    }
+
     function over(event) {
-      if (!enabled || !finePointer.matches || event.pointerType !== "mouse") return;
+      if (!enabled || automatic.matches || !finePointer.matches || event.pointerType !== "mouse") return;
       const next = findCard(event.target);
       if (!next) return;
       clearTimeout(hideTimer);
@@ -66,8 +147,7 @@
       if (next === card) return schedulePosition();
       hide();
       card = next;
-      const pose = next.getAttribute("data-mascot") || (next.classList.contains("orbit-card") ? "peek" : "work");
-      element.setAttribute("data-pose", ["peek", "work", "wave", "contact"].includes(pose) ? pose : "peek");
+      setPose(next);
       point = { x: event.clientX, y: event.clientY };
       settleUntil = performance.now() + 1200;
       position();
@@ -82,13 +162,13 @@
     }
 
     function move(event) {
-      if (!card || event.pointerType !== "mouse") return;
+      if (!card || automatic.matches || event.pointerType !== "mouse") return;
       point = { x: event.clientX, y: event.clientY };
       schedulePosition();
     }
 
     function out(event) {
-      if (!card || findCard(event.relatedTarget) === card) return;
+      if (!card || automatic.matches || findCard(event.relatedTarget) === card) return;
       clearTimeout(revealTimer);
       revealTimer = 0;
       clearTimeout(hideTimer);
@@ -98,9 +178,10 @@
     const events = [
       [document, "pointerover", over], [document, "pointermove", move],
       [document, "pointerout", out], [document, "pointerdown", hide],
-      [document, "visibilitychange", hide], [document, "pointerleave", hide],
-      [window, "scroll", hide], [window, "resize", hide], [window, "blur", hide],
-      [finePointer, "change", hide],
+      [document, "pointerup", release], [document, "pointercancel", release],
+      [document, "visibilitychange", wake], [document, "pointerleave", leave],
+      [window, "scroll", scroll], [window, "resize", wake], [window, "blur", hide], [window, "focus", wake],
+      [finePointer, "change", wake], [automatic, "change", wake],
     ];
     events.forEach(function (entry) { entry[0].addEventListener(entry[1], entry[2], { passive: true }); });
 
@@ -108,6 +189,7 @@
       configure: function (options) {
         enabled = !destroyed && options.motion && !options.paused;
         if (!enabled) hide();
+        else scheduleAuto(600);
       },
       destroy: function () {
         destroyed = true;

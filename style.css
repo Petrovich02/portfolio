@@ -36,8 +36,7 @@ body { min-width: 0; overflow-x: hidden; }
 .ambient-backdrop.is-paused .ambient-glow { animation-play-state: paused; }
 @keyframes ambient-drift { from { transform: translate3d(-3vw, -3vh, 0) scale(.94); } to { transform: translate3d(16vw, 15vh, 0) scale(1.14); } }
 @keyframes ambient-drift-violet { from { transform: translate3d(5vw, -9vh, 0) scale(1.12); } to { transform: translate3d(-14vw, 14vh, 0) scale(.92); } }
-@media (hover: none), (pointer: coarse) { .pointer-ribbon, .site-mascot { display: none; } }
-@media (max-width: 760px), (hover: none), (pointer: coarse) { .contact-mascot-edge { display: none; } }
+@media (hover: none), (pointer: coarse) { .pointer-ribbon { display: none; } }
 @media (hover: hover) and (pointer: fine) {
   #root { cursor: url("assets/cursors/chrome-arrow.svg") 4 3, auto; }
   .site-shell :is(a, button, select, summary, input[type="range"]) { cursor: url("assets/cursors/chrome-link.svg") 4 3, pointer; }
@@ -232,7 +231,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .modal-body.landscape { grid-template-columns: minmax(0,1.25fr) minmax(240px,1fr); }
 }
 @media (max-width: 760px) {
-  .site-mascot { display: none; }
   .site-header { height: 76px; }
   .portfolio-wordmark { font-size: 15px; }
   .site-header nav { display: none; position: absolute; top: 67px; left: var(--page-pad); right: var(--page-pad); border: 1px solid #5d8192; background: #07121cf5; border-radius: 12px; padding: 22px; box-shadow: 0 15px 40px #0009; z-index: 20; }
@@ -331,6 +329,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 560px) {
   .about-content { grid-template-columns: minmax(0,1fr); gap: 32px; }
   .about-portrait { max-width: 360px; }
+}
+@media (max-width: 760px), (hover: none), (pointer: coarse) {
+  .site-mascot { width: 104px; height: 104px; transition: visibility 0s .3s; }
+  .site-mascot.is-visible { transition-delay: 0s; }
+  .mascot-body img { transition-duration: .28s; }
+  .site-mascot.is-visible .mascot-hands img { transition-delay: .18s; }
+  .contact-mascot-edge { left: auto; right: 0; top: 40px; bottom: auto; width: 128px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

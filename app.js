@@ -86,40 +86,33 @@
     );
   }
 
-  function SiteMascot(props) {
-    const element = useRef(null);
-    const mascot = useRef(null);
-    useEffect(function () {
-      if (!window.PortfolioMascot) return;
-      mascot.current = window.PortfolioMascot.create(element.current);
-      return function () { if (mascot.current) mascot.current.destroy(); };
-    }, []);
-    useEffect(function () {
-      if (mascot.current) mascot.current.configure({ motion: props.motion, paused: props.paused });
-    }, [props.motion, props.paused]);
-    const poses = { peek: "gennady-mascot-v2", work: "gennady-work-v1", wave: "gennady-wave-v1", contact: "gennady-contact-v1" };
-    return h("div", { className: "site-mascot", ref: element, "aria-hidden": true, "data-pose": "peek" },
-      Object.keys(poses).map(function (pose) {
-        const image = { src: "assets/images/" + poses[pose] + ".webp", alt: "", width: 512, height: 512, draggable: false };
-        return h("div", { key: pose, className: "mascot-pose mascot-pose-" + pose },
-          h("div", { className: "mascot-body" }, h("img", image)),
-          h("div", { className: "mascot-hands" }, h("img", image)));
-      }));
-  }
-
   function Orbit(props) {
     const featured = ["estate-talk", "estate-tours", "yoga-shorts", "hotels"].map(function (id) {
       return projects.find(function (project) { return project.id === id; });
     });
-    const [selected, setSelected] = useState(0);
+    const [position, setPosition] = useState(0);
+    const wrap = function (index) { return ((index % featured.length) + featured.length) % featured.length; };
+    const selected = wrap(position);
     const [drag, setDrag] = useState(0);
     const pointer = useRef(null);
     const dragged = useRef(false);
     const timer = useRef(null);
+    const track = useRef(null);
     useEffect(function () { return function () { clearTimeout(timer.current); }; }, []);
+    useEffect(function () {
+      if (track.current && track.current.contains(document.activeElement)) {
+        track.current.querySelector(".is-active").focus({ preventScroll: true });
+      }
+    }, [position]);
     const select = function (index) {
-      setSelected((index + featured.length) % featured.length);
+      setPosition(function (current) {
+        let distance = wrap(index) - wrap(current);
+        if (distance > featured.length / 2) distance -= featured.length;
+        if (distance < -featured.length / 2) distance += featured.length;
+        return current + distance;
+      });
     };
+    const step = function (direction) { setPosition(function (current) { return current + direction; }); };
     function pointerDown(event) {
       if (event.pointerType === "mouse" && event.button !== 0) return;
       clearTimeout(timer.current);
@@ -138,7 +131,7 @@
     function pointerUp(event) {
       if (!pointer.current) return;
       const distance = event.clientX - pointer.current.x;
-      if (dragged.current && Math.abs(distance) > 35) select(selected + (distance < 0 ? 1 : -1));
+      if (dragged.current && Math.abs(distance) > 35) step(distance < 0 ? 1 : -1);
       pointer.current = null;
       setDrag(0);
       timer.current = setTimeout(function () { dragged.current = false; }, 0);
@@ -147,7 +140,7 @@
       if (event.target instanceof HTMLInputElement) return;
       if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
         event.preventDefault();
-        select(selected + (event.key === "ArrowRight" ? 1 : -1));
+        step(event.key === "ArrowRight" ? 1 : -1);
       }
     }
     return h("div", {
@@ -155,16 +148,18 @@
       "aria-roledescription": "карусель", "aria-label": "Избранные работы", onKeyDown: keyDown,
     },
       h("div", {
-        className: "orbit-track", style: { "--drag": drag + "px" },
+        ref: track, className: "orbit-track" + (drag ? " is-dragging" : ""), style: { "--drag": drag + "px" },
         onPointerDown: pointerDown, onPointerMove: pointerMove, onPointerUp: pointerUp,
         onPointerCancel: function () { pointer.current = null; dragged.current = false; setDrag(0); },
         onPointerLeave: function (event) { if (event.pointerType === "mouse") pointerUp(event); },
-      }, featured.map(function (project, index) {
-        let offset = (index - selected + featured.length) % featured.length;
-        if (offset > featured.length / 2) offset -= featured.length;
+      }, Array.from({ length: 7 }, function (_, slot) {
+        // Stable positions let cards leave at the edge instead of crossing the centre on wrap.
+        const offset = slot - 3;
+        const virtualIndex = position + offset;
+        const project = featured[wrap(virtualIndex)];
         const visible = Math.abs(offset) < 2;
         return h("button", {
-          key: project.id, type: "button",
+          key: virtualIndex, type: "button",
           className: "orbit-card" + (offset === 0 ? " is-active" : "") +
             (visible ? "" : " is-hidden") + (project.portrait ? "" : " wide-project"),
           style: { "--offset": offset, "--depth": Math.abs(offset) },
@@ -172,7 +167,7 @@
           "aria-label": (offset === 0 ? "Открыть проект: " : "Выбрать проект: ") + project.title,
           onClick: function (event) {
             if (event.detail !== 0 && dragged.current) { dragged.current = false; return; }
-            if (offset === 0) props.onOpen(project); else select(index);
+            if (offset === 0) props.onOpen(project); else step(offset);
           },
         },
           h("img", { src: project.poster, alt: "", style: { objectPosition: project.coverPosition }, draggable: false, fetchPriority: visible ? "high" : "auto" }),
@@ -184,7 +179,7 @@
       h("div", { className: "carousel-controls" },
         h("p", { className: "selected-name", "aria-live": "polite" }, featured[selected].title),
         h("div", { className: "slider-controls" },
-          h(IconButton, { label: "Предыдущая работа", onClick: function () { select(selected - 1); } }, icon(Left)),
+          h(IconButton, { label: "Предыдущая работа", onClick: function () { step(-1); } }, icon(Left)),
           h("div", { className: "slider-rail" },
             h("input", {
               "aria-label": "Выбрать работу в карусели", type: "range", min: 0, max: featured.length - 1,
@@ -193,7 +188,7 @@
             h("div", { className: "slider-ticks", "aria-hidden": true },
               featured.map(function (project) { return h("span", { key: project.id }); })),
           ),
-          h(IconButton, { label: "Следующая работа", onClick: function () { select(selected + 1); } }, icon(Right)),
+          h(IconButton, { label: "Следующая работа", onClick: function () { step(1); } }, icon(Right)),
         ),
         h("p", { className: "drag-hint" }, String(selected + 1).padStart(2, "0") + " / 04"),
       ),
@@ -447,11 +442,10 @@
     }
     return h("div", { id: "top", className: "site-shell" + (motion ? "" : " reduce-motion") },
       h(AmbientBackdrop, { motion: motion, paused: !!activeProject }),
-      h(SiteMascot, { motion: motion, paused: !!activeProject || menu }),
       h("a", { className: "skip-link", href: "#works" }, "Перейти к работам"),
       h("header", { className: "site-header" },
         h("h1", { className: "site-title", "aria-label": "Портфолио" },
-          h("a", { className: "wordmark portfolio-wordmark", href: "#top", "aria-label": "Портфолио — наверх" }, "ПОРТФОЛИО")),
+          h("a", { className: "wordmark portfolio-wordmark", href: "#top", "aria-label": "Портфолио — наверх" }, "Портфолио")),
         h("nav", { id: "main-nav", "aria-label": "Основная навигация", className: menu ? "menu-open" : "" },
           h("a", { href: "#showreel", onClick: closeMenu }, "Шоурил"),
           h("a", { href: "#works", onClick: closeMenu }, "Работы"),
@@ -516,11 +510,11 @@
             h("h2", { className: "display-title smaller" }, "ОБО МНЕ"),
           ),
           h("div", { className: "about-content" },
-            h("figure", { className: "about-portrait", "data-mascot": "wave" },
+            h("figure", { className: "about-portrait" },
               h("img", {
                 src: "assets/images/gennady-studio-v1-640.webp",
                 srcSet: "assets/images/gennady-studio-v1-640.webp 640w, assets/images/gennady-studio-v1-1120.webp 1120w",
-                sizes: "(max-width: 560px) calc(100vw - 40px), (max-width: 760px) 260px, 320px",
+                sizes: "(max-width: 560px) 180px, 220px",
                 width: 640, height: 800, loading: "lazy", decoding: "async",
                 alt: "Студийный портрет Геннадия",
               }),
@@ -529,27 +523,36 @@
               h("h3", {}, site.name),
               h("p", {}, "Монтирую видео для соцсетей, обзоры недвижимости и отелей, занятия йогой и личные проекты."),
               h("p", {}, "Беру на себя полное ведение контента: подбираю идеи и референсы для съёмки, составляю контент-план и сопровождаю выпуск роликов."),
+              h("p", {}, "Люблю живое общение: сначала обсуждаем задачу, аудиторию и то, что нравится вам. Если идея пока только в общих чертах, помогу её сформулировать и подобрать примеры."),
+              h("p", {}, "В работе ценю понятный диалог. Объясняю свои решения, спокойно отношусь к вопросам и обратной связи — мне важно, чтобы мы слышали друг друга и были довольны результатом."),
               h("ul", { className: "creative-tools", "aria-label": "Программы и инструменты" },
                 [
                   { code: "Pr", name: "Premiere Pro", theme: "premiere" },
                   { code: "Ae", name: "After Effects", theme: "after-effects" },
                   { code: "Ps", name: "Photoshop", theme: "photoshop" },
-                  { name: "Нейросети", theme: "ai" },
                 ].map(function (tool) {
                   return h("li", { key: tool.theme, className: "creative-tool tool-" + tool.theme },
-                    h("span", { className: "tool-icon", "aria-hidden": true }, tool.code ||
-                      h("svg", { viewBox: "0 0 32 32", fill: "none" },
-                        h("path", { d: "M17 6l2.9 8.1L28 17l-8.1 2.9L17 28l-2.9-8.1L6 17l8.1-2.9L17 6Z", stroke: "currentColor", strokeWidth: "1.5", strokeLinejoin: "round" }),
-                        h("path", { d: "M7 2v8M3 6h8", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }))),
+                    h("span", { className: "tool-icon", "aria-hidden": true }, tool.code),
                     h("span", { className: "tool-name" },
                       tool.code ? h("span", { className: "tool-vendor" }, "Adobe") : null,
                       tool.name));
                 })),
+              h("ul", { className: "ai-tools", "aria-label": "Нейросети" },
+                [
+                  { id: "chatgpt", name: "ChatGPT", monochrome: true },
+                  { id: "codex", name: "Codex" },
+                  { id: "gemini", name: "Gemini" },
+                  { id: "grok", name: "Grok", monochrome: true },
+                ].map(function (tool) {
+                  return h("li", { key: tool.id },
+                    h("img", { src: "assets/logos/" + tool.id + ".svg", alt: "", width: 26, height: 26,
+                      loading: "lazy", className: tool.monochrome ? "monochrome-logo" : undefined }),
+                    h("span", {}, tool.name));
+                })),
             ),
           ),
         ),
-        h("section", { className: "contact-section", id: "contact", "data-mascot": "contact" },
-          h("span", { className: "contact-mascot-edge", "aria-hidden": true }),
+        h("section", { className: "contact-section", id: "contact" },
           h("h2", {}, "ОБСУДИМ", h("br"), h("span", {}, "ТВОЙ ПРОЕКТ")),
           h("a", { className: "contact-hero-button", href: site.telegram, target: "_blank",
             rel: "noopener noreferrer" }, "Обсудить проект", icon(Arrow)),

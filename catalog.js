@@ -78,6 +78,19 @@ window.PORTFOLIO_CATALOG = [
     "format": "shorts",
     "media": [
       {
+        "id": "work-080",
+        "title": "Как вести себя на просмотре",
+        "poster": "assets/posters/work-080.webp",
+        "src": "assets/video/work-080.mp4",
+        "source": "Вариан 2 с вставками.mp4",
+        "aspect": "1080 / 1920",
+        "portrait": true,
+        "duration": 55.433,
+        "playbackDuration": 55.433,
+        "isExcerpt": false,
+        "excerptStart": 0
+      },
+      {
         "id": "work-044",
         "title": "Ипотека",
         "poster": "assets/posters/work-044.webp",
@@ -277,6 +290,19 @@ window.PORTFOLIO_CATALOG = [
     ],
     "format": "shorts",
     "media": [
+      {
+        "id": "work-081",
+        "title": "ЖК «Айвазовский»",
+        "poster": "assets/posters/work-081.webp",
+        "src": "assets/video/work-081.mp4",
+        "source": "вариант 2.mp4",
+        "aspect": "1080 / 1920",
+        "portrait": true,
+        "duration": 50.133,
+        "playbackDuration": 50.133,
+        "isExcerpt": false,
+        "excerptStart": 0
+      },
       {
         "id": "work-062",
         "title": "Квартира в Тюмени",

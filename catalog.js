@@ -78,6 +78,19 @@ window.PORTFOLIO_CATALOG = [
     "format": "shorts",
     "media": [
       {
+        "id": "work-083",
+        "title": "Квартира или бизнес?",
+        "poster": "assets/posters/work-083.webp",
+        "src": "assets/video/work-083.mp4",
+        "source": "тест.mp4",
+        "aspect": "1080 / 1920",
+        "portrait": true,
+        "duration": 18.7,
+        "playbackDuration": 18.7,
+        "isExcerpt": false,
+        "excerptStart": 0
+      },
+      {
         "id": "work-080",
         "title": "Как вести себя на просмотре",
         "poster": "assets/posters/work-080.webp",
@@ -998,18 +1011,31 @@ window.PORTFOLIO_CATALOG = [
     "id": "feed-stories",
     "category": "shorts",
     "title": "Короткие истории",
-    "subtitle": "Анимация и юмор",
-    "summary": "Анимационные и юмористические ролики для социальных сетей.",
+    "subtitle": "Shorts / Reels",
+    "summary": "Интервью, анимационные и юмористические ролики для социальных сетей.",
     "poster": "assets/covers/feed-stories-v1.webp",
     "portrait": true,
     "aspect": "1080 / 1920",
     "tags": [
       "Shorts / Reels",
       "Истории",
-      "4 видео"
+      "5 видео"
     ],
     "format": "shorts",
     "media": [
+      {
+        "id": "work-082",
+        "title": "На ёлочном заводе",
+        "poster": "assets/posters/work-082.webp",
+        "src": "assets/video/work-082.mp4",
+        "source": "гот.mp4",
+        "aspect": "1080 / 1920",
+        "portrait": true,
+        "duration": 61.16,
+        "playbackDuration": 61.16,
+        "isExcerpt": false,
+        "excerptStart": 0
+      },
       {
         "id": "work-066",
         "title": "Анимационная история",

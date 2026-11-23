@@ -387,6 +387,77 @@
     );
   }
 
+  function PricingSection() {
+    const groups = [
+      {
+        title: "Короткие ролики",
+        rates: [
+          {
+            label: "Простой Reels или Shorts до 1 минуты",
+            price: "1\u00a0000\u00a0₽",
+            description: "Если фрагмент уже выбран, уберу паузы и лишнее, подгоню видео под вертикальный формат и добавлю субтитры.",
+          },
+          {
+            label: "Ролик с оформлением",
+            price: "2\u00a0000\u00a0₽",
+            description: "Соберу ролик из нескольких сцен, добавлю перебивки, музыку, звуковые акценты или оформлю титры.",
+          },
+        ],
+        note: "Цены за один ролик.",
+      },
+      {
+        title: "Длинные видео",
+        rates: [
+          { label: "До 10 минут", price: "5\u00a0000\u00a0₽" },
+          { label: "Свыше 10 и до 30 минут", price: "8\u00a0000\u00a0₽" },
+          { label: "Свыше 30 и до 60 минут", price: "12\u00a0000\u00a0₽" },
+        ],
+        note: "Базовый монтаж по готовому плану для обзоров, интервью, подкастов, обучающих и отчётных видео. Если нужно отсмотреть много исходников, собрать структуру с нуля или синхронизировать несколько камер, посчитаю стоимость отдельно.",
+      },
+      {
+        title: "Свадебный монтаж",
+        rates: [
+          { label: "Клип до 5 минут", price: "5\u00a0000\u00a0₽" },
+          { label: "Фильм до 30 минут", price: "10\u00a0000\u00a0₽" },
+          { label: "Фильм свыше 30 и до 60 минут", price: "15\u00a0000\u00a0₽" },
+        ],
+        note: "В цену входит сборка клипа или фильма из ваших материалов, монтаж под музыку и базовая обработка звука.",
+      },
+    ];
+
+    return h("section", { className: "section-container pricing-section", id: "prices", "aria-labelledby": "prices-title" },
+      h("div", { className: "section-side" },
+        h("h2", { className: "display-title", id: "prices-title" }, "ЦЕНЫ")),
+      h("div", { className: "pricing-content" },
+        h("div", { className: "pricing-cards" }, groups.map(function (group) {
+          return h("div", { className: "pricing-card", key: group.title },
+            h("h3", {}, group.title),
+            h("ul", { className: "pricing-list" }, group.rates.map(function (rate) {
+              return h("li", { key: rate.label },
+                h("div", { className: "pricing-rate" },
+                  h("span", {}, rate.label),
+                  h("strong", {}, "от " + rate.price)),
+                rate.description ? h("p", {}, rate.description) : null);
+            })),
+            h("p", {}, group.note));
+        })),
+        h("div", { className: "pricing-terms" },
+          h("div", {},
+            h("h3", {}, "Что входит в цену"),
+            h("p", {}, "Монтаж по согласованному заданию, готовый файл в нужном формате и один круг правок по вашему списку. Свои ошибки исправляю бесплатно."),
+            h("p", {}, "Отдельно считаю отбор моментов из длинной записи для коротких роликов, сценарий, сложную графику, дополнительные версии, срочный монтаж и изменения согласованного задания. Любую доплату согласую заранее.")),
+          h("div", {},
+            h("h3", {}, "Как оплачивается работа"),
+            h("p", {}, "До начала работы согласуем объём, сроки, итоговую цену и размер предоплаты. Приступаю после получения материалов и предоплаты. Присылаю видео на согласование, вношу правки и передаю готовый файл после полной оплаты."),
+            h("p", {}, "Для серии роликов могу посчитать цену за весь пакет и разбить оплату по этапам. Работаю как самозанятый, могу заключить договор и выдаю чек."))),
+        h("div", { className: "pricing-contact" },
+          h("p", {}, "Чтобы узнать цену проекта, коротко опишите задачу и пришлите пример монтажа, который вам нравится."),
+          h("a", { className: "contact-button", href: site.telegram, target: "_blank", rel: "noopener noreferrer" },
+            "Написать в Telegram", icon(Arrow))),
+      ),
+    );
+  }
+
   function App() {
     const [filter, setFilter] = useState("all");
     const [activeProject, setActiveProject] = useState(null);
@@ -449,6 +520,7 @@
         h("nav", { id: "main-nav", "aria-label": "Основная навигация", className: menu ? "menu-open" : "" },
           h("a", { href: "#showreel", onClick: closeMenu }, "Шоурил"),
           h("a", { href: "#works", onClick: closeMenu }, "Работы"),
+          h("a", { href: "#prices", onClick: closeMenu }, "Цены"),
           h("a", { href: "#about", onClick: closeMenu }, "Обо мне"),
           h("a", { className: "contact-button", href: site.telegram, target: "_blank",
             rel: "noopener noreferrer", onClick: closeMenu }, "Обсудить проект", icon(Arrow)),
@@ -505,6 +577,7 @@
             return h(ProjectCard, { key: project.id, project: project, onOpen: setActiveProject });
           })),
         ),
+        h(PricingSection),
         h("section", { className: "about-section section-container", id: "about" },
           h("div", { className: "section-side" },
             h("h2", { className: "display-title smaller" }, "ОБО МНЕ"),
